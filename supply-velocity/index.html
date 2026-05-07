@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SERP Report - Supply Chain Consulting Keywords | May 7, 2026</title>
+<style>
+  :root {
+    --sv-blue: #1a3a5c;
+    --sv-accent: #2980b9;
+    --sv-green: #27ae60;
+    --sv-gold: #f39c12;
+    --sv-red: #e74c3c;
+    --bg: #f4f6f9;
+    --card-bg: #ffffff;
+    --text: #2c3e50;
+    --muted: #7f8c8d;
+    --border: #e0e4e8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+
+  .header {
+    background: linear-gradient(135deg, var(--sv-blue) 0%, #2c5f8a 100%);
+    color: white; padding: 40px 0; text-align: center;
+  }
+  .header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+  .header p { font-size: 1rem; opacity: 0.85; }
+  .header .date { margin-top: 12px; font-size: 0.85rem; opacity: 0.65; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+
+  /* Summary cards */
+  .summary-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px; margin-bottom: 40px;
+  }
+  .summary-card {
+    background: var(--card-bg); border-radius: 12px; padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06); text-align: center;
+  }
+  .summary-card .number { font-size: 2.5rem; font-weight: 800; color: var(--sv-accent); }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .summary-card.highlight .number { color: var(--sv-green); }
+  .summary-card.warn .number { color: var(--sv-gold); }
+
+  /* City sections */
+  .city-section { margin-bottom: 50px; }
+  .city-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid var(--sv-accent);
+  }
+  .city-icon { font-size: 1.5rem; }
+  .city-header h2 { font-size: 1.5rem; font-weight: 700; color: var(--sv-blue); }
+  .city-header .count { font-size: 0.8rem; color: var(--muted); background: var(--bg); padding: 4px 12px; border-radius: 20px; }
+
+  /* Keyword tables */
+  .keyword-block {
+    background: var(--card-bg); border-radius: 12px; margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden;
+  }
+  .keyword-title {
+    padding: 14px 20px; font-weight: 600; font-size: 0.95rem;
+    background: #f8f9fb; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .keyword-title .kw { flex: 1; }
+  .sv-badge {
+    font-size: 0.7rem; font-weight: 700; padding: 3px 10px;
+    border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .sv-badge.rank1 { background: #d4efdf; color: #1e8449; }
+  .sv-badge.rank2 { background: #d5f5e3; color: #27ae60; }
+  .sv-badge.rank3 { background: #fdebd0; color: #e67e22; }
+  .sv-badge.notop3 { background: #fadbd8; color: #c0392b; }
+
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    text-align: left; font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 0.8px; color: var(--muted); padding: 10px 20px;
+    border-bottom: 1px solid var(--border); font-weight: 600;
+  }
+  td { padding: 12px 20px; border-bottom: 1px solid #f2f3f5; font-size: 0.88rem; }
+  tr:last-child td { border-bottom: none; }
+
+  .rank-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%; font-weight: 700; font-size: 0.8rem;
+  }
+  .rank-1 { background: #f1c40f; color: white; }
+  .rank-2 { background: #bdc3c7; color: white; }
+  .rank-3 { background: #cd7f32; color: white; }
+
+  .domain { font-weight: 600; color: var(--sv-blue); }
+  .domain.is-sv { color: var(--sv-green); }
+  .title-text { color: var(--text); }
+  .url-text { font-size: 0.75rem; color: var(--muted); word-break: break-all; }
+
+  tr.is-supply-velocity { background: #f0faf4; }
+
+  /* Legend */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 30px;
+    padding: 16px 20px; background: var(--card-bg); border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-size: 0.82rem;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+  /* Footer */
+  .footer { text-align: center; padding: 30px; color: var(--muted); font-size: 0.8rem; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.4rem; }
+    td, th { padding: 8px 12px; }
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>SERP Analysis: Consulting Keywords</h1>
+  <p>Top 3 Organic Results Across Denver, Chicago &amp; St. Louis</p>
+  <div class="date">Data pulled May 7, 2026 via DataForSEO Live SERP API</div>
+</div>
+
+<div class="container">
+
+  <!-- Summary Cards -->
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="number">27</div>
+      <div class="label">Keywords Analyzed</div>
+    </div>
+    <div class="summary-card highlight">
+      <div class="number">19</div>
+      <div class="label">SV in Top 3</div>
+    </div>
+    <div class="summary-card highlight">
+      <div class="number">14</div>
+      <div class="label">SV Ranking #1</div>
+    </div>
+    <div class="summary-card warn">
+      <div class="number">8</div>
+      <div class="label">SV Not in Top 3</div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#d4efdf;"></div> SV Ranks #1</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#d5f5e3;"></div> SV Ranks #2-3</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#fdebd0;"></div> SV Ranks #4-10</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#fadbd8;"></div> SV Not in Top 10</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f0faf4; border:1px solid #27ae60;"></div> Supply Velocity row highlighted green</div>
+  </div>
+
+  <!-- ==================== DENVER ==================== -->
+  <div class="city-section">
+    <div class="city-header">
+      <span class="city-icon">&#127967;</span>
+      <h2>Denver, Colorado</h2>
+      <span class="count">9 keywords</span>
+    </div>
+
+    <!-- 1. automotive supply chain consulting Denver -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">automotive supply chain consulting Denver</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Denver Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-denver/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">acmedistribution.com</td>
+          <td><div class="title-text">Supply Chain & Logistics Consulting in Denver, CO</div><div class="url-text">https://acmedistribution.com/warehousing/supply-chain-management/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">theacegrp.com</td>
+          <td><div class="title-text">Denver Automotive Consultants - The Ace Group</div><div class="url-text">https://www.theacegrp.com/denver-automotive-consultants/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 2. pharma supply chain consulting Denver -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">pharma supply chain consulting Denver</span>
+        <span class="sv-badge notop3">SV #6</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain">darkhorseconsultinggroup.com</td>
+          <td><div class="title-text">Supply Chain</div><div class="url-text">https://www.darkhorseconsultinggroup.com/service-domains/supply-chain</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">indeed.com</td>
+          <td><div class="title-text">Biotech Consultant Jobs, Employment in Denver, CO</div><div class="url-text">https://www.indeed.com/q-biotech-consultant-l-denver,-co-jobs.html</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">gforcelifesciences.com</td>
+          <td><div class="title-text">Life Sciences Manufacturing & Supply Chain Consulting</div><div class="url-text">https://www.gforcelifesciences.com/client-services/biotech-pharmaceutical/manufacturing-supply-chain/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 3. ev supply chain consulting Denver -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">ev supply chain consulting Denver</span>
+        <span class="sv-badge rank2">SV #2</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain">exponent.com</td>
+          <td><div class="title-text">Batteries & Energy Storage | Exponent</div><div class="url-text">https://www.exponent.com/capabilities/batteries-energy-storage</div></td>
+        </tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Denver Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-denver/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">fathommfg.com</td>
+          <td><div class="title-text">Automotive & EV Manufacturing</div><div class="url-text">https://fathommfg.com/industries/automotive-ev/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 4. healthcare supply chain consulting Denver -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">healthcare supply chain consulting Denver</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Denver Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-denver/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">darkhorseconsultinggroup.com</td>
+          <td><div class="title-text">Supply Chain</div><div class="url-text">https://www.darkhorseconsultinggroup.com/service-domains/supply-chain</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">wahrmm.org</td>
+          <td><div class="title-text">WAHRMM - Colorado</div><div class="url-text">https://www.wahrmm.org/cahrmm</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 5. retail supply chain consulting Denver -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">retail supply chain consulting Denver</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Denver Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-denver/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">acmedistribution.com</td>
+          <td><div class="title-text">Supply Chain & Logistics Consulting in Denver, CO</div><div class="url-text">https://acmedistribution.com/warehousing/supply-chain-management/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">reactionsearch.com</td>
+          <td><div class="title-text">Denver Supply Chain Operations for Emerging Markets</div><div class="url-text">https://www.reactionsearch.com/supply-chain-operations-services/denver-supply-chain-operations/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 6. oem supply chain consulting Denver -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">oem supply chain consulting Denver</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Denver Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-denver/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">acmedistribution.com</td>
+          <td><div class="title-text">Supply Chain & Logistics Consulting in Denver, CO</div><div class="url-text">https://acmedistribution.com/warehousing/supply-chain-management/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">denverproductdesign.com</td>
+          <td><div class="title-text">Product Sourcing</div><div class="url-text">https://denverproductdesign.com/product-sourcing/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 7. aerospace supply chain consulting Denver -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">aerospace supply chain consulting Denver</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Denver Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-denver/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">axeon.net</td>
+          <td><div class="title-text">Aerospace Consulting</div><div class="url-text">https://axeon.net/aerospace-consulting/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">indeed.com</td>
+          <td><div class="title-text">Aerospace Consulting jobs in Denver, Co</div><div class="url-text">https://www.indeed.com/q-aerospace-consulting-l-denver,-co-jobs.html</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 8. food supply chain consulting Denver -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">food supply chain consulting Denver</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Denver Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-denver/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">foodbusinessconsulting.com</td>
+          <td><div class="title-text">Home - Food Business Consulting - Food Consulting Services</div><div class="url-text">https://foodbusinessconsulting.com/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">linkedin.com</td>
+          <td><div class="title-text">FOOD BUSINESS CONSULTING</div><div class="url-text">https://www.linkedin.com/company/food-business-consulting</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 9. lean manufacturing consulting Denver -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">lean manufacturing consulting Denver</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Denver Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-denver/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">msudenver.edu</td>
+          <td><div class="title-text">Consulting - MSU Denver</div><div class="url-text">https://www.msudenver.edu/advanced-manufacturing/manufacturing-services/consulting/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">maxpt.net</td>
+          <td><div class="title-text">Lean Six Sigma Training & Consulting in Denver, Colorado (CO)</div><div class="url-text">https://maxpt.net/lean-six-sigma-denver-co/</div></td>
+        </tr>
+      </table>
+    </div>
+
+  </div><!-- end Denver -->
+
+
+  <!-- ==================== CHICAGO ==================== -->
+  <div class="city-section">
+    <div class="city-header">
+      <span class="city-icon">&#127961;</span>
+      <h2>Chicago, Illinois</h2>
+      <span class="count">9 keywords</span>
+    </div>
+
+    <!-- 10. automotive supply chain consulting Chicago -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">automotive supply chain consulting Chicago</span>
+        <span class="sv-badge notop3">SV #4</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain">praxichain.com</td>
+          <td><div class="title-text">Best Supply Chain Consultants in Chicago, IL (2025 Guide)</div><div class="url-text">https://praxichain.com/best-supply-chain-consultants-in-chicago-il-2025-guide/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">plgconsulting.com</td>
+          <td><div class="title-text">PLG Consulting: Industrial Logistics and Supply Chain...</div><div class="url-text">https://plgconsulting.com/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">establishinc.com</td>
+          <td><div class="title-text">Establish Inc.</div><div class="url-text">https://www.establishinc.com/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 11. pharma supply chain consulting Chicago -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">pharma supply chain consulting Chicago</span>
+        <span class="sv-badge notop3">SV Not in Top 10</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain">tencountconsulting.com</td>
+          <td><div class="title-text">Transformative Supply Chain Management | Ten Count</div><div class="url-text">https://www.tencountconsulting.com/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">pathstonepartners.com</td>
+          <td><div class="title-text">Pharmacy - Pathstone Partners Healthcare Consulting</div><div class="url-text">https://pathstonepartners.com/service/pharmacy/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">gforcelifesciences.com</td>
+          <td><div class="title-text">Life Science Consulting in Chicago, IL</div><div class="url-text">https://www.gforcelifesciences.com/service-areas/chicago/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 12. ev supply chain consulting Chicago -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">ev supply chain consulting Chicago</span>
+        <span class="sv-badge notop3">SV Not in Top 10</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain">praxichain.com</td>
+          <td><div class="title-text">EV Batteries Logistics & Supply Chain Consulting</div><div class="url-text">https://praxichain.com/capability/ev-batteries-logistics-supply-chain-consulting/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">govst.edu</td>
+          <td><div class="title-text">Electric Vehicle Supply Chain</div><div class="url-text">https://www.govst.edu/Electric-Vehicle-Supply-Chain/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">ev.illinois.gov</td>
+          <td><div class="title-text">Supply Chain - Electrify Illinois</div><div class="url-text">https://ev.illinois.gov/grow-your-business/supply-chain.html</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 13. healthcare supply chain consulting Chicago -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">healthcare supply chain consulting Chicago</span>
+        <span class="sv-badge rank2">SV #2</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain">impact-advisors.com</td>
+          <td><div class="title-text">Supply Chain Optimization</div><div class="url-text">https://www.impact-advisors.com/supply-chain-optimization/</div></td>
+        </tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Chicago Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-chicago/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">kaufmanhall.com</td>
+          <td><div class="title-text">Kaufman Hall: Healthcare Management Consulting + Insights</div><div class="url-text">https://www.kaufmanhall.com/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 14. retail supply chain consulting Chicago -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">retail supply chain consulting Chicago</span>
+        <span class="sv-badge rank2">SV #2</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain">chicago-consulting.com</td>
+          <td><div class="title-text">Chicago Consulting: Logistics and Supply Chain Management</div><div class="url-text">https://www.chicago-consulting.com/</div></td>
+        </tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Chicago Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-chicago/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">praxichain.com</td>
+          <td><div class="title-text">Best Supply Chain Consultants in Chicago, IL (2025 Guide)</div><div class="url-text">https://praxichain.com/best-supply-chain-consultants-in-chicago-il-2025-guide/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 15. oem supply chain consulting Chicago -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">oem supply chain consulting Chicago</span>
+        <span class="sv-badge rank2">SV #2</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain">chicago-consulting.com</td>
+          <td><div class="title-text">Chicago Consulting: Logistics and Supply Chain Management</div><div class="url-text">https://www.chicago-consulting.com/</div></td>
+        </tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Chicago Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-chicago/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">praxichain.com</td>
+          <td><div class="title-text">Best Supply Chain Consultants in Chicago, IL (2025 Guide)</div><div class="url-text">https://praxichain.com/best-supply-chain-consultants-in-chicago-il-2025-guide/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 16. aerospace supply chain consulting Chicago -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">aerospace supply chain consulting Chicago</span>
+        <span class="sv-badge notop3">SV Not in Top 10</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain">kepler-consulting.com</td>
+          <td><div class="title-text">Aerospace and Defense Consulting Services | Kepler U.S</div><div class="url-text">https://www.kepler-consulting.com/en/industry/aerospace-and-defense-consulting/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">ilcgroup.com</td>
+          <td><div class="title-text">ILC: Your Partner for Aerospace Product Development with SAP</div><div class="url-text">https://ilcgroup.com/aerospace-defence/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">builtinchicago.org</td>
+          <td><div class="title-text">Top Chicago, IL Aerospace Companies 2026</div><div class="url-text">https://www.builtinchicago.org/companies/type/aerospace-companies</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 17. food supply chain consulting Chicago -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">food supply chain consulting Chicago</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Chicago Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-chicago/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">tiliallc.com</td>
+          <td><div class="title-text">Tilia - Make The Food Supply Chain Safer, Nutritious...</div><div class="url-text">https://tiliallc.com/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">praxichain.com</td>
+          <td><div class="title-text">Best Supply Chain Consultants in Chicago, IL (2025 Guide)</div><div class="url-text">https://praxichain.com/best-supply-chain-consultants-in-chicago-il-2025-guide/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 18. lean manufacturing consulting Chicago -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">lean manufacturing consulting Chicago</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our Chicago Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-chicago/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">adonispartners.com</td>
+          <td><div class="title-text">Lean Six Sigma Consulting in Chicago, Illinois</div><div class="url-text">https://adonispartners.com/lean-six-sigma-consulting-chicago-illinois-naperville-joliet-indiana/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">twentyhelpinghands.com</td>
+          <td><div class="title-text">Chicago Lean Manufacturing</div><div class="url-text">https://www.twentyhelpinghands.com/about</div></td>
+        </tr>
+      </table>
+    </div>
+
+  </div><!-- end Chicago -->
+
+
+  <!-- ==================== ST. LOUIS ==================== -->
+  <div class="city-section">
+    <div class="city-header">
+      <span class="city-icon">&#127963;</span>
+      <h2>St. Louis, Missouri</h2>
+      <span class="count">9 keywords</span>
+    </div>
+
+    <!-- 19. automotive supply chain consulting St. Louis -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">automotive supply chain consulting St. Louis</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our St. Louis Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-st-louis/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">sheerlogistics.com</td>
+          <td><div class="title-text">Automotive Logistics Solutions</div><div class="url-text">https://sheerlogistics.com/industry-automotive/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">optimumscr.com</td>
+          <td><div class="title-text">Supply Chain Recruiters in St. Louis | Optimum SCR</div><div class="url-text">https://optimumscr.com/locations/supply-chain-recruiters-st-louis/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 20. pharma supply chain consulting St. Louis -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">pharma supply chain consulting St. Louis</span>
+        <span class="sv-badge rank2">SV #2</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain">pointcore.com</td>
+          <td><div class="title-text">Healthcare Consulting Services in St. Louis</div><div class="url-text">https://www.pointcore.com/healthcare-consulting-services/st-louis-missouri/</div></td>
+        </tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our St. Louis Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-st-louis/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">patheon.com</td>
+          <td><div class="title-text">St. Louis, Missouri Site - Thermo Fisher Scientific</div><div class="url-text">https://www.patheon.com/us/en/site-locations/st-louis-mo.html</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 21. ev supply chain consulting St. Louis -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">ev supply chain consulting St. Louis</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our St. Louis Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-st-louis/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">umbrex.com</td>
+          <td><div class="title-text">Find an independent consultant in Missouri</div><div class="url-text">https://umbrex.com/locations/north-america/united-states/missouri/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">evsupplychain.com</td>
+          <td><div class="title-text">EV SupplyChain</div><div class="url-text">https://evsupplychain.com/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 22. healthcare supply chain consulting St. Louis -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">healthcare supply chain consulting St. Louis</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our St. Louis Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-st-louis/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">pointcore.com</td>
+          <td><div class="title-text">Healthcare Consulting Services in St. Louis</div><div class="url-text">https://www.pointcore.com/healthcare-consulting-services/st-louis-missouri/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">apexhealthservices.net</td>
+          <td><div class="title-text">Healthcare Supply Chain St. Louis, MO - Apex Health Services</div><div class="url-text">https://www.apexhealthservices.net/healthcare-supply-chain-in-st-louis-mo</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 23. retail supply chain consulting St. Louis -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">retail supply chain consulting St. Louis</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our St. Louis Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-st-louis/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">reactionsearch.com</td>
+          <td><div class="title-text">St. Louis Supply Chain Operations</div><div class="url-text">https://www.reactionsearch.com/supply-chain-operations-services/st-louis-supply-chain-operations/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">trilogywarehousepartners.com</td>
+          <td><div class="title-text">Wholesale & Retail Supply Chain Solutions</div><div class="url-text">https://trilogywarehousepartners.com/retail-supply-chain/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 24. oem supply chain consulting St. Louis -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">oem supply chain consulting St. Louis</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our St. Louis Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-st-louis/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">clarity-manufacturing.com</td>
+          <td><div class="title-text">Supply Chain And Materials</div><div class="url-text">https://clarity-manufacturing.com/supply-chain-and-materials/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">trilogywarehousepartners.com</td>
+          <td><div class="title-text">Supply Chain Consulting & Project Management Services</div><div class="url-text">https://trilogywarehousepartners.com/supply-chain-consulting/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 25. aerospace supply chain consulting St. Louis -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">aerospace supply chain consulting St. Louis</span>
+        <span class="sv-badge rank2">SV #2</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain">greaterstlinc.com</td>
+          <td><div class="title-text">Aerospace</div><div class="url-text">https://greaterstlinc.com/business/aerospace/</div></td>
+        </tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our St. Louis Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-st-louis/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">linkedin.com</td>
+          <td><div class="title-text">Sarah Brueggeman - Leader | Procurement | Supply Chain</div><div class="url-text">https://www.linkedin.com/in/sarah-brueggeman-275a5618</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 26. food supply chain consulting St. Louis -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">food supply chain consulting St. Louis</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our St. Louis Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-st-louis/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">fscstl.com</td>
+          <td><div class="title-text">FoodService Center, Inc: Home</div><div class="url-text">https://www.fscstl.com/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">sheerlogistics.com</td>
+          <td><div class="title-text">Food and Beverage Logistics Services</div><div class="url-text">https://sheerlogistics.com/industry-food-and-beverage/</div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 27. lean manufacturing consulting St. Louis -->
+    <div class="keyword-block">
+      <div class="keyword-title">
+        <span class="kw">lean manufacturing consulting St. Louis</span>
+        <span class="sv-badge rank1">SV #1</span>
+      </div>
+      <table>
+        <tr><th style="width:50px">Rank</th><th>Domain</th><th>Title</th></tr>
+        <tr class="is-supply-velocity">
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="domain is-sv">supplyvelocity.com</td>
+          <td><div class="title-text">Our St. Louis Lean and Supply Chain Consulting Team</div><div class="url-text">https://www.supplyvelocity.com/about/lean-and-supply-chain-consulting-in-st-louis/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="domain">supplyvelocity.com</td>
+          <td><div class="title-text">Lean Consulting</div><div class="url-text">https://www.supplyvelocity.com/services/lean/</div></td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="domain">leanfocus.com</td>
+          <td><div class="title-text">Lean Focus | Transforming Businesses for Good</div><div class="url-text">https://leanfocus.com/</div></td>
+        </tr>
+      </table>
+    </div>
+
+  </div><!-- end St. Louis -->
+
+
+  <!-- ==================== BREAKDOWN TABLE ==================== -->
+  <div class="city-section">
+    <div class="city-header">
+      <span class="city-icon">&#128202;</span>
+      <h2>Supply Velocity Position Summary</h2>
+    </div>
+
+    <div class="keyword-block" style="overflow-x:auto;">
+      <table>
+        <tr>
+          <th>Keyword</th>
+          <th style="text-align:center">Denver</th>
+          <th style="text-align:center">Chicago</th>
+          <th style="text-align:center">St. Louis</th>
+        </tr>
+        <tr>
+          <td>automotive supply chain consulting</td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+          <td style="text-align:center"><span class="sv-badge notop3">#4</span></td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+        </tr>
+        <tr>
+          <td>pharma supply chain consulting</td>
+          <td style="text-align:center"><span class="sv-badge notop3">#6</span></td>
+          <td style="text-align:center"><span class="sv-badge notop3">--</span></td>
+          <td style="text-align:center"><span class="sv-badge rank2">#2</span></td>
+        </tr>
+        <tr>
+          <td>ev supply chain consulting</td>
+          <td style="text-align:center"><span class="sv-badge rank2">#2</span></td>
+          <td style="text-align:center"><span class="sv-badge notop3">--</span></td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+        </tr>
+        <tr>
+          <td>healthcare supply chain consulting</td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+          <td style="text-align:center"><span class="sv-badge rank2">#2</span></td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+        </tr>
+        <tr>
+          <td>retail supply chain consulting</td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+          <td style="text-align:center"><span class="sv-badge rank2">#2</span></td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+        </tr>
+        <tr>
+          <td>oem supply chain consulting</td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+          <td style="text-align:center"><span class="sv-badge rank2">#2</span></td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+        </tr>
+        <tr>
+          <td>aerospace supply chain consulting</td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+          <td style="text-align:center"><span class="sv-badge notop3">--</span></td>
+          <td style="text-align:center"><span class="sv-badge rank2">#2</span></td>
+        </tr>
+        <tr>
+          <td>food supply chain consulting</td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+        </tr>
+        <tr>
+          <td>lean manufacturing consulting</td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+          <td style="text-align:center"><span class="sv-badge rank1">#1</span></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div><!-- end container -->
+
+<div class="footer">
+  <p>Generated by DataForSEO SERP API &bull; May 7, 2026 &bull; Google Desktop &bull; Location-specific queries</p>
+</div>
+
+</body>
+</html>
