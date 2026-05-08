@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Content Keyword Proposal | SupplyVelocity.com | May 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --amber:#F59E0B;
+  --amber-dark:#D97706;
+  --navy:#1e293b;
+  --navy-deep:#0F172A;
+  --blue:#2563EB;
+  --teal:#0D9488;
+  --bg:#FFFFFF;
+  --surface:#F5F5F5;
+  --surface-2:#EFEFEF;
+  --dark:#0F172A;
+  --text:#000000;
+  --text2:#3F3F3F;
+  --text3:#666666;
+  --muted:#999999;
+  --border:#E0E0E0;
+  --green:#16a34a;
+  --orange:#ea580c;
+  --purple:#7c3aed;
+  --red:#dc2626;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.55;font-size:15px}
+.container{max-width:1280px;margin:0 auto;padding:0 40px}
+section{padding:64px 0;border-top:1px solid var(--border)}
+section:first-of-type{border-top:none}
+.band-dark{background:var(--dark);color:#fff;border-top:none}
+.band-dark p{color:#94a3b8}
+.band-surface{background:var(--surface)}
+h1{font-size:2.6em;font-weight:800;letter-spacing:-0.025em;line-height:1.05}
+h2{font-size:1.7em;font-weight:700;letter-spacing:-0.015em;margin-bottom:24px;line-height:1.15}
+h3{font-size:1.2em;font-weight:700;margin-bottom:14px;letter-spacing:-0.005em}
+h4{font-size:0.95em;font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.06em}
+.section-num{color:var(--amber);font-size:0.78em;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px}
+p{margin-bottom:14px;color:var(--text2)}
+.lede{font-size:1.05em;color:var(--text);max-width:880px}
+table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:0.95em}
+th,td{text-align:left;padding:12px 16px;border:1px solid var(--border);vertical-align:top}
+th{background:var(--surface);font-weight:600;font-size:0.82em;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3)}
+td.kw{font-weight:600;color:var(--navy);white-space:nowrap}
+.tag{display:inline-block;padding:3px 10px;font-size:0.78em;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin:1px 2px;border-radius:3px}
+.tag-green{background:var(--green);color:#fff}
+.tag-blue{background:var(--blue);color:#fff}
+.tag-amber{background:var(--amber);color:#000}
+.tag-outline{background:transparent;border:1px solid var(--border);color:var(--text3)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{border:1px solid var(--border);padding:22px;background:var(--bg)}
+.card-surface{background:var(--surface)}
+.priority-amber{border-left:4px solid var(--amber)}
+.priority-blue{border-left:4px solid var(--blue)}
+.priority-teal{border-left:4px solid var(--teal)}
+ul,ol{margin:6px 0 14px 22px}
+li{margin-bottom:5px;color:var(--text2);font-size:0.93em}
+.stat{padding:18px;border:1px solid var(--border);text-align:center}
+.stat-num{font-size:2.1em;font-weight:800;letter-spacing:-0.025em;line-height:1}
+.stat-label{font-size:0.7em;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:6px;font-weight:600}
+.stat-sub{font-size:0.78em;color:var(--text3);margin-top:6px}
+.callout{border-left:4px solid var(--amber);padding:18px 22px;background:var(--surface);margin:18px 0}
+.callout-info{border-left:4px solid var(--blue);padding:18px 22px;background:#EFF6FF;margin:18px 0}
+.callout-ai{border-left:4px solid var(--purple);padding:18px 22px;background:#F5F3FF;margin:18px 0}
+.callout-good{border-left:4px solid var(--green);padding:18px 22px;background:#F0FDF4;margin:18px 0}
+.callout-warn{border-left:4px solid var(--orange);padding:18px 22px;background:#FFF7ED;margin:18px 0}
+.toc{columns:2;column-gap:36px;list-style:none;margin:0;padding:0}
+.toc li{margin-bottom:7px;font-size:0.9em;break-inside:avoid;list-style:none}
+.toc a{color:var(--text2);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:1px}
+.toc a:hover{color:var(--amber);border-color:var(--amber)}
+a{color:var(--amber);text-decoration:underline;text-underline-offset:2px}
+a:hover{color:var(--amber-dark)}
+.scroll-x{overflow-x:auto}
+.kd-pill{display:inline-block;padding:3px 12px;font-size:0.88em;font-weight:700;border-radius:12px;text-align:center;min-width:38px}
+.kd-easy{background:#D1FAE5;color:#065F46}
+.kd-medium{background:#FEF3C7;color:#92400E}
+.kd-hard{background:#FEE2E2;color:#991B1B}
+.kd-na{background:#F3F4F6;color:#6B7280}
+.vol-highlight{font-weight:700;color:var(--green)}
+.serp-features{font-size:0.9em;color:var(--text3);line-height:1.5}
+.note-cell{font-size:0.95em;color:var(--text2);line-height:1.5;max-width:440px}
+.city-group{background:var(--navy);color:#fff;font-weight:700;font-size:0.82em;text-transform:uppercase;letter-spacing:0.08em}
+.city-group td{background:var(--navy);color:#fff;border-color:var(--navy);padding:8px 14px}
+hr.dashed{border:none;border-top:1px dashed var(--border);margin:28px 0}
+.gradient-text{background:linear-gradient(90deg, var(--amber), var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@media(max-width:880px){
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .container{padding:0 22px}
+  h1{font-size:1.85em}
+  h2{font-size:1.35em}
+  .toc{columns:1}
+  section{padding:44px 0}
+  td.kw{white-space:normal}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="band-dark" style="padding:88px 0 64px;border-bottom:1px solid #1e293b">
+<div class="container">
+<div class="section-num" style="color:#94a3b8">New Content Proposal | SupplyVelocity.com</div>
+<h1>New Content<br><span class="gradient-text">Keyword Proposal</span></h1>
+<p class="lede" style="color:#cbd5e1;font-size:1.1em;margin-top:18px">
+45 strategic keywords across 3 content categories: general location pages, industry + location pages, and service pages. All keyword data sourced from Semrush (May 8, 2026). Each keyword includes a strategic rationale for why SupplyVelocity should target it.
+</p>
+<div style="display:flex;flex-wrap:wrap;gap:32px;margin-top:28px;font-size:0.85em;color:#64748b">
+<span><strong style="color:#fff">Date</strong>&nbsp; May 8, 2026</span>
+<span><strong style="color:#fff">Keywords</strong>&nbsp; 45 researched</span>
+<span><strong style="color:#fff">Categories</strong>&nbsp; 3 content types</span>
+<span><strong style="color:#fff">Source</strong>&nbsp; Semrush US database</span>
+</div>
+</div>
+</section>
+
+<!-- TOC -->
+<section style="padding:36px 0">
+<div class="container">
+<h4 style="color:var(--muted)">Contents</h4>
+<ul class="toc">
+<li><a href="#summary">1&nbsp; Executive summary</a></li>
+<li><a href="#locations">2&nbsp; General location pages (15 keywords)</a></li>
+<li><a href="#industry">3&nbsp; Industry + location pages (20 keywords)</a></li>
+<li><a href="#services">4&nbsp; Service pages (10 keywords)</a></li>
+<li><a href="#next">5&nbsp; Recommended priority &amp; next steps</a></li>
+</ul>
+</div>
+</section>
+
+<!-- 01 SUMMARY -->
+<section id="summary">
+<div class="container">
+<div class="section-num">01&nbsp; Executive summary</div>
+<h2>The proposal at a glance</h2>
+
+<div class="grid-4" style="margin-bottom:28px">
+<div class="stat"><div class="stat-num" style="color:var(--amber)">45</div><div class="stat-label">Keywords</div><div class="stat-sub">Across 3 content categories</div></div>
+<div class="stat"><div class="stat-num" style="color:var(--green)">2,870</div><div class="stat-label">Service KW volume</div><div class="stat-sub">Monthly searches (US) for service pages</div></div>
+<div class="stat"><div class="stat-num" style="color:var(--blue)">35</div><div class="stat-label">New pages</div><div class="stat-sub">15 location + 20 industry-location</div></div>
+<div class="stat"><div class="stat-num" style="color:var(--teal)">&le; 26</div><div class="stat-label">Max KD</div><div class="stat-sub">All keywords easy to rank for</div></div>
+</div>
+
+<div class="grid-2">
+<div class="card priority-amber">
+<h4>Key findings</h4>
+<ul>
+<li><strong>Pharmaceutical supply chain consulting</strong> is the #1 opportunity: SV 590, CPC $13.26, KD only 4</li>
+<li><strong>Retail supply chain consulting</strong> has the highest CPC ($10.36) signaling premium client value</li>
+<li><strong>California and Florida</strong> lead location keyword volume at SV 30 each with strong upward trends</li>
+<li><strong>All 45 keywords have KD &le; 26</strong> &mdash; every single keyword is realistically attainable</li>
+<li><strong>11 of 15 location keywords</strong> show Commercial intent, indicating high purchase readiness</li>
+<li><strong>Industry + location keywords</strong> are strategically critical for AI search engine citations (ChatGPT, Perplexity, Google AI Overviews)</li>
+</ul>
+</div>
+<div class="card priority-blue">
+<h4>Recommendations</h4>
+<ul>
+<li><strong>Priority 1: Service pages</strong> &mdash; highest volume and commercial value (pharma, risk management, retail, EV, CPG)</li>
+<li><strong>Priority 2: State pages</strong> &mdash; California, Florida, Texas have highest location volume</li>
+<li><strong>Priority 3: City pages</strong> &mdash; Dallas, Houston, Seattle, Minneapolis have measurable volume and commercial intent</li>
+<li><strong>Priority 4: Industry + location pages</strong> &mdash; build topical depth on existing city pages for AI search visibility</li>
+<li><strong>Consolidate CPG variants</strong> &mdash; "cpg supply chain consulting" and "consumer packaged goods supply chain consulting" should be one page targeting both keywords (combined SV 520)</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 02 LOCATION PAGES -->
+<section id="locations" class="band-surface">
+<div class="container">
+<div class="section-num">02&nbsp; General location pages</div>
+<h2>15 new location pages: 10 cities + 5 states</h2>
+
+<p class="lede" style="margin-bottom:12px">Keyword formula: <strong>"supply chain consulting [location]"</strong>. All proposed locations are new &mdash; none overlap with the 21 existing location pages on supplyvelocity.com.</p>
+
+<div class="callout" style="margin-bottom:24px">
+<strong>Currently targeted locations (21 pages):</strong> Chicago, Denver, St. Louis, Atlanta, Boulder, Charleston, Charlotte, Chesapeake, Colorado Springs, Columbia SC, Indianapolis, Kansas City, Madison, Milwaukee, Philadelphia, Pittsburgh, Raleigh, Richmond, Virginia Beach, North Carolina, Virginia.
+</div>
+
+<div class="scroll-x">
+<table>
+<thead>
+<tr>
+<th>Keyword</th>
+<th style="text-align:center">Intent</th>
+<th style="text-align:right">Vol</th>
+<th style="text-align:center">KD</th>
+<th>SERP Features</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="kw">supply chain consulting california</td>
+<td style="text-align:center"><span class="tag tag-blue">Info</span></td>
+<td style="text-align:right" class="vol-highlight">30</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">6</span></td>
+<td class="serp-features">Reviews, Local pack, Related searches</td>
+<td class="note-cell">Highest search volume among proposed location keywords (SV 30). California is the largest state economy and top manufacturing state. Trend data shows rising interest. Also captures variant "supply chain consultants california" (SV 30).</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting florida</td>
+<td style="text-align:center"><span class="tag tag-green">Comm</span></td>
+<td style="text-align:right" class="vol-highlight">30</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">3</span></td>
+<td class="serp-features">Local pack, Related searches</td>
+<td class="note-cell">Tied for highest volume (SV 30) with strong upward trend. Florida has a booming logistics sector with major ports (Jacksonville, Tampa, Miami). KD 3 (very easy) and commercial intent make this a top priority page.</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting dallas</td>
+<td style="text-align:center"><span class="tag tag-green">Comm</span></td>
+<td style="text-align:right" class="vol-highlight">20</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">3</span></td>
+<td class="serp-features">Reviews, Local pack, Related searches</td>
+<td class="note-cell">Dallas-Fort Worth is one of the largest distribution and logistics hubs in the US. Highest search volume among the proposed new cities (SV 20). KD 3 (very easy) makes it highly attainable.</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting texas</td>
+<td style="text-align:center"><span class="tag tag-green">Comm</span></td>
+<td style="text-align:right" class="vol-highlight">20</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">3</span></td>
+<td class="serp-features">Reviews, People also ask, Local pack, Related searches, Ads bottom</td>
+<td class="note-cell">Texas is the #1 state for manufacturing output and a major energy/petrochemical hub. SV 20 with KD 3 (very easy). Ads bottom SERP feature confirms advertiser interest. Covers the entire Texas market.</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting los angeles</td>
+<td style="text-align:center"><span class="tag tag-blue">Info</span></td>
+<td style="text-align:right">10</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">6</span></td>
+<td class="serp-features">Knowledge panel, Related searches</td>
+<td class="note-cell">LA is the largest metro in the West and a massive logistics/port hub (Port of LA/Long Beach handles 40% of US imports). KD 6 (easy). Also ranks for variant "supply chain consultants los angeles" (SV 20).</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting houston</td>
+<td style="text-align:center"><span class="tag tag-green">Comm</span></td>
+<td style="text-align:right">10</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">8</span></td>
+<td class="serp-features">Sitelinks, Reviews, People also ask, Local pack, Discussions and forums, Related searches</td>
+<td class="note-cell">Houston is the energy capital of the US with a major petrochemical and manufacturing corridor. KD 8 (easy). Only keyword in this batch with measurable competition (0.33) suggesting advertiser interest. Rich SERP features.</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting seattle</td>
+<td style="text-align:center"><span class="tag tag-green">Comm</span></td>
+<td style="text-align:right">10</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">6</span></td>
+<td class="serp-features">Reviews, Local pack, Related searches</td>
+<td class="note-cell">Seattle is home to Amazon, Boeing, and a major tech/aerospace ecosystem. SV 10 with KD 6 (easy) and commercial intent. Local pack SERP feature present. High-value B2B audience.</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting minneapolis</td>
+<td style="text-align:center"><span class="tag tag-green">Comm</span></td>
+<td style="text-align:right">10</td>
+<td style="text-align:center"><span class="kd-pill kd-medium">11</span></td>
+<td class="serp-features">Reviews, Local pack, Related searches</td>
+<td class="note-cell">Minneapolis is HQ to multiple Fortune 500 companies (Target, 3M, General Mills, UnitedHealth). SV 10 with KD 11 (easy). Commercial intent with Local pack. Strong CPG and retail supply chain market.</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting detroit</td>
+<td style="text-align:center"><span class="tag tag-green">Comm</span></td>
+<td style="text-align:right;color:var(--muted)">n/a</td>
+<td style="text-align:center"><span class="kd-pill kd-medium">14</span></td>
+<td class="serp-features">Sitelinks, Reviews, Local pack, Related searches</td>
+<td class="note-cell">Detroit is the historic center of US automotive manufacturing and a major OEM supply chain hub. KD 14 (easy). Commercial intent signals high-value searchers. SV already dominates automotive supply chain keywords in other cities.</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting miami</td>
+<td style="text-align:center"><span class="tag tag-green">Comm</span></td>
+<td style="text-align:right;color:var(--muted)">n/a</td>
+<td style="text-align:center"><span class="kd-pill kd-medium">17</span></td>
+<td class="serp-features">Reviews, People also ask, Local pack, Related searches</td>
+<td class="note-cell">Miami is the gateway to Latin American trade and a major international logistics hub (Port Miami, MIA cargo). KD 17 (easy-medium) is the highest among proposed location keywords but still very achievable. Commercial intent and rich SERP features.</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting georgia</td>
+<td style="text-align:center"><span class="tag tag-green">Comm</span></td>
+<td style="text-align:right;color:var(--muted)">n/a</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">8</span></td>
+<td class="serp-features">Reviews, Local pack, Related searches</td>
+<td class="note-cell">Variant "supply chain management consulting georgia" has SV 70 (confirmed by Semrush). Georgia is a top logistics state (Port of Savannah, Atlanta airport hub). State page reinforces geographic authority alongside existing Atlanta city page.</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting ohio</td>
+<td style="text-align:center"><span class="tag tag-green">Comm</span></td>
+<td style="text-align:right;color:var(--muted)">n/a</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">8</span></td>
+<td class="serp-features">Reviews, Local pack, Related searches</td>
+<td class="note-cell">Ohio is a major manufacturing and automotive state (Honda, GM plants). KD 8 (easy). Commercial intent. Captures long-tail local searches across Columbus, Cincinnati, Cleveland, and Dayton manufacturing corridors.</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting nashville</td>
+<td style="text-align:center"><span class="tag tag-blue">Info</span></td>
+<td style="text-align:right;color:var(--muted)">0</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">5</span></td>
+<td class="serp-features">Sitelinks, Knowledge panel, Related searches</td>
+<td class="note-cell">Nashville is one of the fastest-growing US metros with expanding healthcare (HCA Healthcare HQ) and automotive (Nissan) sectors. KD 5 (very easy). Growing market signals future demand.</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting phoenix</td>
+<td style="text-align:center"><span class="tag tag-blue">Info</span></td>
+<td style="text-align:right;color:var(--muted)">0</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">1</span></td>
+<td class="serp-features">People also ask, Knowledge panel, Related searches</td>
+<td class="note-cell">Phoenix is a rapidly growing manufacturing hub with major semiconductor (TSMC, Intel) and aerospace investments. KD 1 (very easy). First-mover advantage in an expanding market.</td>
+</tr>
+<tr>
+<td class="kw">supply chain consulting memphis</td>
+<td style="text-align:center"><span class="tag tag-green">Comm</span></td>
+<td style="text-align:right;color:var(--muted)">0</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">0</span></td>
+<td class="serp-features">Reviews, People also ask, Local pack</td>
+<td class="note-cell">Memphis is the FedEx world hub and one of America's most important logistics/distribution centers. KD 0 (easiest possible). Commercial intent. Any supply chain consultant search in Memphis carries extremely high commercial intent.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</section>
+
+<!-- 03 INDUSTRY + LOCATION PAGES -->
+<section id="industry">
+<div class="container">
+<div class="section-num">03&nbsp; Industry + location pages</div>
+<h2>20 industry-specific pages for existing locations</h2>
+
+<p class="lede" style="margin-bottom:12px">Keyword formula: <strong>"[industry] supply chain consulting [location]"</strong>. All locations are cities/states where SupplyVelocity already has a presence page. Industries are matched to each city's actual economic strengths.</p>
+
+<div class="callout-ai" style="margin-bottom:24px">
+<strong style="color:var(--purple)">AI Search Engine Strategy</strong>
+<p style="margin-top:8px;margin-bottom:0;color:var(--text2)">
+These industry + location keywords show <strong>0 measured search volume in Semrush</strong>, which is typical for long-tail local queries. However, they are <strong>strategically critical for visibility in AI search engines</strong> (ChatGPT, Perplexity, Google AI Overviews, Gemini, and others). When users ask AI assistants questions like <em>"Who provides automotive supply chain consulting in Indianapolis?"</em>, AI models cite pages that match this exact topical specificity. Creating dedicated pages for these keyword combinations ensures SupplyVelocity is referenced and recommended by AI-powered search. The existing SERP report confirms SV already ranks #1 for many identical patterns in Denver, Chicago, and St. Louis &mdash; these 20 pages extend that dominance to additional markets.
+</p>
+</div>
+
+<div class="scroll-x">
+<table>
+<thead>
+<tr>
+<th>Keyword</th>
+<th style="text-align:center">KD</th>
+<th>Strategic rationale</th>
+</tr>
+</thead>
+<tbody>
+<!-- Atlanta -->
+<tr class="city-group"><td colspan="3">Atlanta &mdash; 3 pages</td></tr>
+<tr>
+<td class="kw">food supply chain consulting atlanta</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Atlanta is home to Coca-Cola, Chick-fil-A, and dozens of major food/beverage companies. SV already has an Atlanta location page &mdash; adding industry-specific content creates topical depth. SV ranks #1 for food supply chain consulting in Denver, Chicago, and St. Louis.</td>
+</tr>
+<tr>
+<td class="kw">retail supply chain consulting atlanta</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Home Depot is HQ'd in Atlanta along with major retail distribution operations. SV ranks #1-2 for retail supply chain consulting in existing cities. Replicating this success in Atlanta is highly achievable.</td>
+</tr>
+<tr>
+<td class="kw">healthcare supply chain consulting atlanta</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">CDC is headquartered in Atlanta with major hospital systems (Emory, Grady). SV ranks #1-2 for healthcare supply chain consulting across Denver, Chicago, and St. Louis. Natural extension of proven keyword strategy.</td>
+</tr>
+<!-- Philadelphia -->
+<tr class="city-group"><td colspan="3">Philadelphia &mdash; 2 pages</td></tr>
+<tr>
+<td class="kw">pharmaceutical supply chain consulting philadelphia</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Philadelphia sits in the heart of the US pharma corridor with proximity to J&amp;J, Merck, AstraZeneca, and GSK operations. National keyword "pharmaceutical supply chain consulting" has SV 590 and KD 4 &mdash; the local variant captures that intent with geographic specificity.</td>
+</tr>
+<tr>
+<td class="kw">healthcare supply chain consulting philadelphia</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Philadelphia has world-class hospital systems (Penn Medicine, Jefferson, Children's Hospital) with massive supply chain operations. SV ranks well for healthcare SC consulting in other cities &mdash; Philadelphia extends this coverage to the Northeast.</td>
+</tr>
+<!-- Indianapolis -->
+<tr class="city-group"><td colspan="3">Indianapolis &mdash; 2 pages</td></tr>
+<tr>
+<td class="kw">automotive supply chain consulting indianapolis</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Indianapolis is the auto racing capital with a strong automotive manufacturing base (Subaru, Allison Transmission). SV ranks #1 for automotive SC consulting in Denver and St. Louis &mdash; Indianapolis is a natural geographic expansion.</td>
+</tr>
+<tr>
+<td class="kw">pharmaceutical supply chain consulting indianapolis</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Eli Lilly is HQ'd in Indianapolis making it a major pharma hub. Pairs with national keyword "pharmaceutical supply chain consulting" (SV 590, KD 4) to capture local pharma decision-makers.</td>
+</tr>
+<!-- Charlotte -->
+<tr class="city-group"><td colspan="3">Charlotte &mdash; 2 pages</td></tr>
+<tr>
+<td class="kw">automotive supply chain consulting charlotte</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Charlotte is in the heart of the Southeast auto manufacturing corridor (BMW Spartanburg is nearby). SV has proven ability to rank for automotive SC consulting keywords in other cities.</td>
+</tr>
+<tr>
+<td class="kw">aerospace supply chain consulting charlotte</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Charlotte has a growing aerospace presence with Collins Aerospace and other defense contractors. SV ranks #1-2 for aerospace SC consulting in Denver and St. Louis.</td>
+</tr>
+<!-- Raleigh -->
+<tr class="city-group"><td colspan="3">Raleigh &mdash; 2 pages</td></tr>
+<tr>
+<td class="kw">pharmaceutical supply chain consulting raleigh</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Raleigh-Durham Research Triangle is one of the top pharma/biotech clusters in the US. National keyword has SV 590 &mdash; local variant targets decision-makers at companies like Biogen, IQVIA, and Novo Nordisk facilities.</td>
+</tr>
+<tr>
+<td class="kw">healthcare supply chain consulting raleigh</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Research Triangle has major hospital systems (Duke, UNC Health) and medical device companies. Complements the pharma page to build topical authority in the Raleigh market.</td>
+</tr>
+<!-- Kansas City -->
+<tr class="city-group"><td colspan="3">Kansas City &mdash; 2 pages</td></tr>
+<tr>
+<td class="kw">food supply chain consulting kansas city</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Kansas City is one of America's largest food processing and meatpacking centers. SV consistently ranks #1 for food SC consulting in existing cities. Kansas City variant targets a high-density food manufacturing market.</td>
+</tr>
+<tr>
+<td class="kw">automotive supply chain consulting kansas city</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Kansas City has major Ford and GM assembly plants. SV dominates automotive SC consulting keywords in Denver (#1) and St. Louis (#1). Natural expansion into another Midwest auto manufacturing hub.</td>
+</tr>
+<!-- Milwaukee -->
+<tr class="city-group"><td colspan="3">Milwaukee &mdash; 2 pages</td></tr>
+<tr>
+<td class="kw">lean manufacturing consulting milwaukee</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">0</span></td>
+<td class="note-cell">Milwaukee has deep manufacturing heritage (Harley-Davidson, Rockwell Automation, Johnson Controls). SV ranks #1 for lean manufacturing consulting in Denver, Chicago, and St. Louis. Milwaukee is a prime Midwest manufacturing market.</td>
+</tr>
+<tr>
+<td class="kw">food supply chain consulting milwaukee</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Milwaukee is historically a food and beverage processing center (brewing, dairy, food manufacturing). Complements the lean manufacturing page to build SV's authority in the Milwaukee market.</td>
+</tr>
+<!-- Pittsburgh -->
+<tr class="city-group"><td colspan="3">Pittsburgh &mdash; 2 pages</td></tr>
+<tr>
+<td class="kw">healthcare supply chain consulting pittsburgh</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">UPMC is one of the largest healthcare systems in the US, headquartered in Pittsburgh. SV ranks #1-2 for healthcare SC consulting in existing cities. Pittsburgh is a major healthcare market opportunity.</td>
+</tr>
+<tr>
+<td class="kw">aerospace supply chain consulting pittsburgh</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Pittsburgh has legacy defense manufacturing and growing aerospace/robotics sector. SV ranks #1-2 for aerospace SC consulting in Denver and St. Louis. Extends coverage to the Northeast industrial corridor.</td>
+</tr>
+<!-- Charleston -->
+<tr class="city-group"><td colspan="3">Charleston &mdash; 2 pages</td></tr>
+<tr>
+<td class="kw">automotive supply chain consulting charleston</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">BMW's Spartanburg plant and Volvo's Berkeley County plant make Charleston a major auto manufacturing hub. SV has strong SERP presence for automotive SC consulting in other cities.</td>
+</tr>
+<tr>
+<td class="kw">aerospace supply chain consulting charleston</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Boeing's 787 Dreamliner final assembly plant is in North Charleston. SV ranks well for aerospace SC consulting keywords in existing cities &mdash; Charleston is a high-value aerospace market.</td>
+</tr>
+<!-- Virginia -->
+<tr class="city-group"><td colspan="3">Virginia (state) &mdash; 1 page</td></tr>
+<tr>
+<td class="kw">aerospace supply chain consulting virginia</td>
+<td style="text-align:center"><span class="kd-pill kd-na">n/a</span></td>
+<td class="note-cell">Virginia is home to the Pentagon, Norfolk Naval Shipyard, and a massive defense/aerospace contractor corridor. State-level aerospace page captures searches across the entire Virginia defense ecosystem.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</section>
+
+<!-- 04 SERVICE PAGES -->
+<section id="services" class="band-surface">
+<div class="container">
+<div class="section-num">04&nbsp; Service pages</div>
+<h2>10 national service keywords</h2>
+
+<p class="lede" style="margin-bottom:12px">These are high-volume, national-scope keywords that target specific service offerings. Each keyword warrants a dedicated service page on supplyvelocity.com. Data sourced from Semrush keyword research (US database, May 2026).</p>
+
+<div class="callout-good" style="margin-bottom:24px">
+<strong>Highest-value opportunities:</strong> "Pharmaceutical supply chain consulting" combines the highest search volume (590/mo) with the highest CPC ($13.26) and an ultra-low KD of 4. "Retail supply chain consulting" has a CPC of $10.36 &mdash; the strongest commercial intent signal in the entire keyword set.
+</div>
+
+<div class="scroll-x">
+<table>
+<thead>
+<tr>
+<th>Keyword</th>
+<th style="text-align:right">Vol</th>
+<th style="text-align:center">KD</th>
+<th style="text-align:right">CPC</th>
+<th style="text-align:center">Comp</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background:#FFFBEB">
+<td class="kw">pharmaceutical supply chain consulting</td>
+<td style="text-align:right" class="vol-highlight">590</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">4</span></td>
+<td style="text-align:right"><strong>$13.26</strong></td>
+<td style="text-align:center">0.12</td>
+<td class="note-cell">Highest search volume AND highest CPC in the entire set &mdash; the most commercially valuable keyword. KD of only 4 makes it extremely easy to rank. Pharma supply chains are complex and highly regulated, commanding premium consulting fees.</td>
+</tr>
+<tr style="background:#FFFBEB">
+<td class="kw">supply chain risk management consulting</td>
+<td style="text-align:right" class="vol-highlight">480</td>
+<td style="text-align:center"><span class="kd-pill kd-medium">26</span></td>
+<td style="text-align:right">$0</td>
+<td style="text-align:center">0.02</td>
+<td class="note-cell">Second highest volume service keyword (SV 480). KD 26 is the highest in this set but still achievable. Post-pandemic supply chain disruptions have made risk management a top C-suite priority.</td>
+</tr>
+<tr>
+<td class="kw">ev supply chain consulting</td>
+<td style="text-align:right" class="vol-highlight">320</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">11</span></td>
+<td style="text-align:right">$0</td>
+<td style="text-align:center">0.33</td>
+<td class="note-cell">SV 320 with growing EV market makes this a high-opportunity keyword. KD 11 (easy). The EV supply chain is expanding rapidly with new battery plants and OEM investments. SV has proven automotive/OEM expertise &mdash; EV is a natural extension.</td>
+</tr>
+<tr>
+<td class="kw">retail supply chain consulting</td>
+<td style="text-align:right" class="vol-highlight">320</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">13</span></td>
+<td style="text-align:right"><strong>$10.36</strong></td>
+<td style="text-align:center">0.07</td>
+<td class="note-cell">Highest CPC ($10.36) signals strong commercial intent and high client value. KD 13 (easy). Retail supply chain transformation (omnichannel, last-mile) is driving demand. SV could build on existing retail SC consulting SERP rankings in location pages.</td>
+</tr>
+<tr>
+<td class="kw">cpg supply chain consulting</td>
+<td style="text-align:right" class="vol-highlight">260</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">13</span></td>
+<td style="text-align:right">$4.42</td>
+<td style="text-align:center">0.05</td>
+<td class="note-cell">SV 260 with CPC $4.42 signaling strong commercial intent. KD 13 (easy). CPG companies have complex multi-tier supply chains. Use "consumer packaged goods supply chain consulting" (SV 260, KD 10) as a secondary keyword on the same page. Combined SV: 520.</td>
+</tr>
+<tr>
+<td class="kw">dynamics 365 supply chain consulting services</td>
+<td style="text-align:right">170</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">6</span></td>
+<td style="text-align:right">$0</td>
+<td style="text-align:center">0.33</td>
+<td class="note-cell">Targeting a specific technology platform (Microsoft Dynamics 365). KD 6 (very easy). Targets companies implementing or optimizing D365 SCM module. High competition (0.33) indicates advertiser interest. Niche keyword with high conversion potential if SV offers this service.</td>
+</tr>
+<tr>
+<td class="kw">supply chain security consulting</td>
+<td style="text-align:right">170</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">12</span></td>
+<td style="text-align:right">$0</td>
+<td style="text-align:center">0.33</td>
+<td class="note-cell">Highest competition score (0.33) among service keywords indicates strong market demand. KD 12 (easy). Supply chain security concerns are rising (cyberattacks, cargo theft, counterfeit goods). Government contracts and regulated industries actively seek this expertise.</td>
+</tr>
+<tr>
+<td class="kw">supply chain sustainability consulting</td>
+<td style="text-align:right">140</td>
+<td style="text-align:center"><span class="kd-pill kd-medium">16</span></td>
+<td style="text-align:right">$0</td>
+<td style="text-align:center">0.10</td>
+<td class="note-cell">SV 140 reflecting growing ESG and sustainability mandates in supply chains. KD 16 (easy). Regulatory pressure (EU CSRD, SEC climate disclosures) is driving demand. SV can position as a sustainability-focused supply chain partner.</td>
+</tr>
+<tr>
+<td class="kw">digital supply chain consulting</td>
+<td style="text-align:right">110</td>
+<td style="text-align:center"><span class="kd-pill kd-medium">17</span></td>
+<td style="text-align:right">$0</td>
+<td style="text-align:center">0.14</td>
+<td class="note-cell">Targeting digital transformation of supply chains (IoT, AI, automation, digital twins). KD 17 (easy). Digital SC transformation is a major trend with increasing corporate investment. Positions SV as forward-thinking and technology-enabled.</td>
+</tr>
+<tr>
+<td class="kw">supply chain network design consultants</td>
+<td style="text-align:right">50</td>
+<td style="text-align:center"><span class="kd-pill kd-easy">0</span></td>
+<td style="text-align:right">$0</td>
+<td style="text-align:center">0.14</td>
+<td class="note-cell">Lower volume (SV 50) but extremely specialized keyword with KD 0. Network design is a high-value consulting engagement. Zero difficulty means SV can rank immediately. Targets companies redesigning distribution networks &mdash; typically large, high-fee projects.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</section>
+
+<!-- 05 NEXT STEPS -->
+<section id="next">
+<div class="container">
+<div class="section-num">05&nbsp; Recommended priority &amp; next steps</div>
+<h2>Content creation roadmap</h2>
+
+<div class="grid-3" style="margin-bottom:28px">
+<div class="card priority-amber">
+<h4 style="color:var(--amber)">Phase 1 &mdash; Quick wins</h4>
+<ul>
+<li><strong>Service pages</strong> for pharmaceutical (SV 590, KD 4), retail (SV 320, KD 13), EV (SV 320, KD 11), and CPG (SV 520 combined, KD 13)</li>
+<li><strong>State pages</strong> for California (SV 30, KD 6) and Florida (SV 30, KD 3)</li>
+<li>Highest ROI content &mdash; measurable volume with low difficulty</li>
+</ul>
+</div>
+<div class="card priority-blue">
+<h4 style="color:var(--blue)">Phase 2 &mdash; Geographic expansion</h4>
+<ul>
+<li><strong>Remaining service pages</strong>: risk management, D365, security, sustainability, digital, network design</li>
+<li><strong>State pages</strong>: Texas (SV 20), Georgia (variant SV 70), Ohio</li>
+<li><strong>Top city pages</strong>: Dallas (SV 20), Houston, Seattle, Minneapolis</li>
+</ul>
+</div>
+<div class="card priority-teal">
+<h4 style="color:var(--teal)">Phase 3 &mdash; AI visibility</h4>
+<ul>
+<li><strong>All 20 industry + location pages</strong> for AI search engine citations</li>
+<li><strong>Remaining city pages</strong>: Detroit, Miami, Nashville, Memphis, Phoenix</li>
+<li>Build topical depth clusters around existing location pages</li>
+</ul>
+</div>
+</div>
+
+<div class="callout">
+<strong>Note on CPG keywords:</strong> "cpg supply chain consulting" (SV 260) and "consumer packaged goods supply chain consulting" (SV 260) should be consolidated into a single service page targeting both keyword variants. This gives the page a combined addressable volume of 520 monthly searches.
+</div>
+
+<hr class="dashed">
+
+<p style="font-size:0.85em;color:var(--muted);margin-top:20px">
+<strong>Data sources:</strong> Semrush US database (phrase_these, phrase_kdi reports) + Semrush Keyword Manager bulk export, May 8, 2026. All search volumes are US monthly averages. Keyword difficulty on 0-100 scale. SERP report cross-referenced from DataForSEO Live SERP API (May 7, 2026).
+</p>
+
+</div>
+</section>
+
+<div style="text-align:center;padding:30px;color:var(--muted);font-size:0.8em;border-top:1px solid var(--border)">
+Prepared by Outrider Digital for SupplyVelocity.com &bull; May 2026
+</div>
+
+</body>
+</html>
