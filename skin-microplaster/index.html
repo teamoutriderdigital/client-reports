@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyword Universe | Skin Microplaster</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--teal:#006f83;--teal-dark:#005566;--bg:#FFFFFF;--surface:#F5F5F5;--surface-2:#EFEFEF;--dark:#0e0f1d;--text:#000000;--text2:#3F3F3F;--text3:#666666;--muted:#999999;--border:#E0E0E0;--green:#16a34a;--blue:#2563eb;--orange:#ea580c;--purple:#7c3aed;--yellow:#ca8a04;--red:#dc2626;--cyan-light:#ecfdff}
+html{scroll-behavior:smooth}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;font-size:15px}
+.container{max-width:1280px;margin:0 auto;padding:0 40px}
+section{padding:64px 0;border-top:1px solid var(--border)}
+section:first-of-type{border-top:none}
+.band-dark{background:var(--dark);color:#fff;border-top:none}
+.band-dark p{color:#bbb}
+.band-surface{background:var(--surface)}
+h1{font-family:Poppins,Inter,sans-serif;font-size:2.6em;font-weight:800;letter-spacing:-0.025em;line-height:1.05}
+h2{font-family:Poppins,Inter,sans-serif;font-size:1.7em;font-weight:700;letter-spacing:-0.015em;margin-bottom:24px;line-height:1.15}
+h3{font-size:1.2em;font-weight:700;margin-bottom:14px;letter-spacing:-0.005em}
+h4{font-size:0.95em;font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.06em}
+.section-num{color:var(--teal);font-size:0.78em;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px}
+p{margin-bottom:14px;color:var(--text2)}
+.lede{font-size:1.05em;color:var(--text);max-width:880px}
+table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:0.88em}
+th,td{text-align:left;padding:11px 14px;border:1px solid var(--border);vertical-align:top}
+th{background:var(--surface);font-weight:600;font-size:0.78em;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3)}
+.tag{display:inline-block;padding:2px 8px;font-size:0.7em;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin:1px 2px;border-radius:2px}
+.tag-teal{background:var(--teal);color:#fff}
+.tag-green{background:var(--green);color:#fff}
+.tag-blue{background:var(--blue);color:#fff}
+.tag-orange{background:var(--orange);color:#fff}
+.tag-purple{background:var(--purple);color:#fff}
+.tag-yellow{background:var(--yellow);color:#000}
+.tag-dark{background:var(--dark);color:#fff}
+.tag-outline{background:transparent;border:1px solid var(--border);color:var(--text3)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{border:1px solid var(--border);padding:22px;background:var(--bg)}
+.card-teal{border-left:4px solid var(--teal)}
+.stat{padding:18px;border:1px solid var(--border);text-align:center}
+.stat-num{font-family:Poppins,Inter,sans-serif;font-size:2.1em;font-weight:800;letter-spacing:-0.025em;line-height:1}
+.stat-label{font-size:0.7em;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:6px;font-weight:600}
+.callout-info{border-left:4px solid var(--teal);padding:18px 22px;background:var(--cyan-light);margin:18px 0}
+a{color:var(--teal);text-decoration:underline;text-underline-offset:2px}
+a:hover{color:var(--teal-dark)}
+.toc{columns:2;column-gap:36px;list-style:none;margin:0;padding:0}
+.toc li{margin-bottom:7px;font-size:0.9em;break-inside:avoid;list-style:none}
+.toc a{color:var(--text2);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:1px}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}
+.accordion-list{margin-top:12px}
+.accordion-item{border:1px solid var(--border);margin-bottom:-1px;background:#fff}
+.accordion-item:first-child{border-radius:4px 4px 0 0}
+.accordion-item:last-child{border-radius:0 0 4px 4px}
+.accordion-header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;cursor:pointer;user-select:none;gap:12px;transition:background .15s}
+.accordion-header:hover{background:var(--surface)}
+.acc-left{display:flex;align-items:center;gap:10px;flex-shrink:0;min-width:0}
+.acc-keyword{font-weight:700;font-size:0.95em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:420px}
+.acc-right{display:flex;align-items:center;gap:14px;flex-shrink:0;font-size:0.85em}
+.acc-metric{min-width:60px;text-align:right}
+.acc-metric small{color:var(--muted);font-size:0.8em;font-weight:400}
+.sub-count{font-size:0.72em;color:var(--muted);padding:2px 8px;border:1px solid var(--border);border-radius:10px;white-space:nowrap}
+.sub-count.no-subs{border-color:transparent}
+.chevron{font-size:0.6em;color:var(--muted);transition:transform .25s;display:inline-block;width:14px;text-align:center}
+.accordion-item.active .chevron{transform:rotate(180deg)}
+.accordion-body{display:none;padding:0 18px 18px;border-top:1px solid var(--border);background:var(--surface)}
+.accordion-item.active .accordion-body{display:block}
+.sub-table{font-size:0.85em;margin:10px 0 4px}
+.sub-table th{font-size:0.75em;padding:8px 12px}
+.sub-table td{padding:8px 12px}
+.expand-btn{padding:8px 18px;font-size:0.82em;font-weight:600;border:1px solid var(--border);background:#fff;cursor:pointer;border-radius:3px;color:var(--text2);transition:.15s}
+.expand-btn:hover{background:var(--surface);border-color:var(--text3)}
+@media(max-width:880px){
+.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+.container{padding:0 22px}
+h1{font-size:1.85em}
+h2{font-size:1.35em}
+.toc{columns:1}
+section{padding:44px 0}
+.accordion-header{flex-direction:column;align-items:flex-start;gap:8px}
+.acc-right{flex-wrap:wrap;gap:8px}
+.acc-keyword{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="band-dark" style="padding:88px 0 64px;border-bottom:1px solid #1F1F1F">
+<div class="container">
+<div class="section-num" style="color:#7ec8d6">Keyword Universe | Skin Microplaster</div>
+<h1>Keyword Universe<br><span style="color:var(--teal)">&amp; Page Strategy</span></h1>
+<p class="lede" style="color:#ddd;font-size:1.1em;margin-top:18px">
+Complete keyword research covering 36 strategic keyword clusters across 64 total keywords.
+Each cluster maps to a dedicated page based on what Google&rsquo;s search results actually reward.
+Data sourced from SEMrush, DataForSEO SERP analysis, and competitor gap research.
+</p>
+<div style="display:flex;flex-wrap:wrap;gap:32px;margin-top:28px;font-size:0.85em;color:#888">
+<span><strong style="color:#fff">Date</strong>&nbsp; May 14, 2026</span>
+<span><strong style="color:#fff">Clusters</strong>&nbsp; 36 keyword groups</span>
+<span><strong style="color:#fff">Total Keywords</strong>&nbsp; 64</span>
+<span><strong style="color:#fff">Monthly Volume</strong>&nbsp; 32,840</span>
+<span><strong style="color:#fff">Sources</strong>&nbsp; SEMrush + DataForSEO</span>
+</div>
+</div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="band-surface" style="padding:40px 0">
+<div class="container">
+<h3>Why one keyword cluster = one page?</h3>
+<div class="callout-info">
+<p style="margin-bottom:8px"><strong>Every page decision here is based on what Google&rsquo;s search results actually show.</strong></p>
+<p style="margin-bottom:8px">When we analyze the SERP (search engine results page) for each keyword, Google is telling us what type of page it wants to rank. If Google consistently ranks dedicated, focused pages for a keyword rather than broader pages that cover many topics, then creating a separate page is the winning strategy.</p>
+<p style="margin-bottom:0">Grouping too many keywords onto a single page dilutes relevance and makes it harder to rank for any of them. Each keyword cluster in this document represents a distinct search intent that deserves its own dedicated page to maximize ranking potential.</p>
+</div>
+</div>
+</section>
+
+<!-- SUMMARY STATS -->
+<section style="padding:48px 0">
+<div class="container">
+<h2>At a Glance</h2>
+<div class="grid-4" style="margin-bottom:28px">
+<div class="stat"><div class="stat-num" style="color:var(--teal)">36</div><div class="stat-label">Keyword Clusters</div></div>
+<div class="stat"><div class="stat-num" style="color:var(--green)">64</div><div class="stat-label">Total Keywords</div></div>
+<div class="stat"><div class="stat-num" style="color:var(--blue)">32,840</div><div class="stat-label">Monthly Search Volume</div></div>
+<div class="stat"><div class="stat-num" style="color:var(--orange)">30</div><div class="stat-label">Blog Post Pages</div></div>
+</div>
+<div class="grid-2">
+<div class="card card-teal">
+<h4>Page Type Breakdown</h4>
+<table>
+<thead><tr><th>Page Type</th><th style="text-align:right">Pages</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong style="color:var(--blue)">Blog Post</strong></td><td style="text-align:right">30</td><td>Educational guides, comparisons, how-tos, cost breakdowns</td></tr>
+<tr><td><strong style="color:var(--orange)">Product Page</strong></td><td style="text-align:right">4</td><td>Product catalogs, finish options, material listings</td></tr>
+<tr><td><strong style="color:var(--purple)">Info Page</strong></td><td style="text-align:right">1</td><td>Reference charts and informational resources</td></tr>
+<tr><td><strong style="color:var(--yellow)">Tool Page</strong></td><td style="text-align:right">1</td><td>Interactive calculators and estimation tools</td></tr>
+
+</tbody>
+</table>
+</div>
+<div class="card">
+<h4>How to Read This Document</h4>
+<ul style="margin-left:18px">
+<li><strong>Click any keyword row</strong> to expand it and see the sub-keywords</li>
+<li><strong>Volume</strong> = monthly US searches from SEMrush</li>
+<li><strong>KD</strong> = Keyword Difficulty (0&ndash;100). Under 20 is easy, 20&ndash;40 moderate, 40+ hard</li>
+<li><strong>CPC</strong> = Google Ads cost-per-click (indicates commercial value)</li>
+<li><strong>Intent tags</strong> show whether searches are informational, commercial, or transactional</li>
+<li><strong>Page Type tags</strong> indicate the recommended page format</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TOC -->
+<section style="padding:36px 0">
+<div class="container">
+<h4 style="color:var(--muted)">Contents</h4>
+<ul class="toc">
+<li><a href="#blog-post">01&nbsp; Blog Post Pages</a></li>
+<li><a href="#product-page">02&nbsp; Product Page Pages</a></li>
+<li><a href="#info-page">03&nbsp; Info Page Pages</a></li>
+<li><a href="#tool-page">04&nbsp; Tool Page Pages</a></li>
+
+</ul>
+</div>
+</section>
+
+<!-- KEYWORD SECTIONS -->
+
+<section id="blog-post">
+<div class="container">
+<div class="section-num">01&nbsp; Blog Post Pages</div>
+<h2>Blog Post Pages</h2>
+<p class="lede">Recommended page type: <strong>Blog Post</strong> &mdash; 30 keyword clusters, 31,850 total monthly searches.</p>
+<div style="display:flex;align-items:center;gap:16px;margin:18px 0 24px">
+<div class="stat" style="display:inline-block;padding:12px 20px"><span class="stat-num" style="font-size:1.6em;color:var(--blue)">30</span><div class="stat-label">Clusters</div></div>
+<button class="expand-btn">Expand All</button>
+</div>
+<div class="accordion-list" id="list-blog-post">
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">pool resurfacing</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>6,600</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:#e65100"><strong>30</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>11.21</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count">5 sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+<table class="sub-table"><thead><tr><th>Sub-Keyword</th><th style="text-align:right">Volume</th><th style="text-align:center">KD</th><th style="text-align:right">CPC</th><th>Intent</th></tr></thead><tbody><tr><td>pool refinishing</td><td style="text-align:right">1,600</td><td style="text-align:center;color:var(--red);font-weight:600">41</td><td style="text-align:right">11.21</td><td><span class="tag tag-green">Commercial</span></td></tr><tr><td>swimming pool resurfacing</td><td style="text-align:right">1,300</td><td style="text-align:center;color:#e65100;font-weight:600">30</td><td style="text-align:right">11.21</td><td><span class="tag tag-green">Commercial</span></td></tr><tr><td>resurfacing pool</td><td style="text-align:right">590</td><td style="text-align:center;color:#e65100;font-weight:600">29</td><td style="text-align:right">11.21</td><td><span class="tag tag-blue">Informational</span></td></tr><tr><td>concrete pool resurfacing</td><td style="text-align:right">320</td><td style="text-align:center;color:#e65100;font-weight:600">23</td><td style="text-align:right">7.46</td><td><span class="tag tag-green">Commercial</span></td></tr><tr><td>cement pool resurfacing</td><td style="text-align:right">260</td><td style="text-align:center;color:#e65100;font-weight:600">30</td><td style="text-align:right">7.46</td><td><span class="tag tag-blue">Informational</span></td></tr></tbody></table>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">pool deck resurfacing</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>5,400</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>9</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>7.41</strong> <small>CPC</small></span>
+<span class="tag tag-green">Commercial</span>
+<span class="sub-count">2 sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+<table class="sub-table"><thead><tr><th>Sub-Keyword</th><th style="text-align:right">Volume</th><th style="text-align:center">KD</th><th style="text-align:right">CPC</th><th>Intent</th></tr></thead><tbody><tr><td>concrete pool deck resurfacing</td><td style="text-align:right">2,400</td><td style="text-align:center;color:var(--orange);font-weight:600">14</td><td style="text-align:right">4.31</td><td><span class="tag tag-blue">Informational</span></td></tr><tr><td>pool decking resurfacing</td><td style="text-align:right">1,300</td><td style="text-align:center;color:#e65100;font-weight:600">20</td><td style="text-align:right">7.41</td><td><span class="tag tag-blue">Informational</span></td></tr></tbody></table>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">pool resurfacing cost</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>2,400</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:#e65100"><strong>23</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>7.22</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count">6 sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+<table class="sub-table"><thead><tr><th>Sub-Keyword</th><th style="text-align:right">Volume</th><th style="text-align:center">KD</th><th style="text-align:right">CPC</th><th>Intent</th></tr></thead><tbody><tr><td>gunite pool resurfacing cost</td><td style="text-align:right">320</td><td style="text-align:center;color:var(--orange);font-weight:600">14</td><td style="text-align:right">5</td><td><span class="tag tag-blue">Informational</span></td></tr><tr><td>concrete pool resurfacing cost</td><td style="text-align:right">140</td><td style="text-align:center;color:var(--orange);font-weight:600">19</td><td style="text-align:right">5.58</td><td><span class="tag tag-blue">Informational</span></td></tr><tr><td>cost of resurfacing pool</td><td style="text-align:right">110</td><td style="text-align:center;color:var(--orange);font-weight:600">17</td><td style="text-align:right">4.15</td><td><span class="tag tag-blue">Informational</span></td></tr><tr><td>plaster swimming pool resurfacing cost</td><td style="text-align:right">110</td><td style="text-align:center;color:var(--orange);font-weight:600">14</td><td style="text-align:right">0</td><td><span class="tag tag-blue">Informational</span></td></tr><tr><td>how much is pool resurfacing</td><td style="text-align:right">70</td><td style="text-align:center;color:var(--green);font-weight:600">6</td><td style="text-align:right">4.12</td><td><span class="tag tag-blue">Informational</span></td></tr><tr><td>marcite pool resurfacing cost</td><td style="text-align:right">50</td><td style="text-align:center;color:var(--green);font-weight:600">6</td><td style="text-align:right">5.52</td><td><span class="tag tag-blue">Informational</span></td></tr></tbody></table>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">gunite pool resurfacing</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>880</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--orange)"><strong>13</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>5.94</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count">1 sub-keyword</span>
+</div>
+</div>
+<div class="accordion-body">
+<table class="sub-table"><thead><tr><th>Sub-Keyword</th><th style="text-align:right">Volume</th><th style="text-align:center">KD</th><th style="text-align:right">CPC</th><th>Intent</th></tr></thead><tbody><tr><td>gunite pool resurfacing options</td><td style="text-align:right">320</td><td style="text-align:center;color:var(--green);font-weight:600">1</td><td style="text-align:right">5</td><td><span class="tag tag-green">Commercial</span></td></tr></tbody></table>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">fiberglass vs concrete pool</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>720</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>8</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>1.01</strong> <small>CPC</small></span>
+<span class="tag tag-purple">Info+Commercial</span>
+<span class="sub-count">3 sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+<table class="sub-table"><thead><tr><th>Sub-Keyword</th><th style="text-align:right">Volume</th><th style="text-align:center">KD</th><th style="text-align:right">CPC</th><th>Intent</th></tr></thead><tbody><tr><td>fiberglass pools vs concrete pools</td><td style="text-align:right">590</td><td style="text-align:center;color:var(--green);font-weight:600">9</td><td style="text-align:right">1.01</td><td><span class="tag tag-purple">Info+Commercial</span></td></tr><tr><td>fiberglass vs concrete pool cost</td><td style="text-align:right">90</td><td style="text-align:center;color:var(--green);font-weight:600">1</td><td style="text-align:right">1.54</td><td><span class="tag tag-purple">Info+Commercial</span></td></tr><tr><td>fiberglass vs cement pool</td><td style="text-align:right">70</td><td style="text-align:center;color:var(--green);font-weight:600">7</td><td style="text-align:right">1.01</td><td><span class="tag tag-purple">Info+Commercial</span></td></tr></tbody></table>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">fiberglass pool resurfacing</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>590</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--orange)"><strong>15</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>6.78</strong> <small>CPC</small></span>
+<span class="tag tag-green">Commercial</span>
+<span class="sub-count">2 sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+<table class="sub-table"><thead><tr><th>Sub-Keyword</th><th style="text-align:right">Volume</th><th style="text-align:center">KD</th><th style="text-align:right">CPC</th><th>Intent</th></tr></thead><tbody><tr><td>fiberglass pool resurfacing options</td><td style="text-align:right">40</td><td style="text-align:center;color:var(--green);font-weight:600">7</td><td style="text-align:right">4.81</td><td><span class="tag tag-blue">Informational</span></td></tr><tr><td>pool fiberglass resurfacing</td><td style="text-align:right">40</td><td style="text-align:center;color:var(--orange);font-weight:600">13</td><td style="text-align:right">6.5</td><td><span class="tag tag-green">Commercial</span></td></tr></tbody></table>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">gunite vs fiberglass pool</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>590</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>1</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>1.21</strong> <small>CPC</small></span>
+<span class="tag tag-purple">Info+Commercial</span>
+<span class="sub-count">1 sub-keyword</span>
+</div>
+</div>
+<div class="accordion-body">
+<table class="sub-table"><thead><tr><th>Sub-Keyword</th><th style="text-align:right">Volume</th><th style="text-align:center">KD</th><th style="text-align:right">CPC</th><th>Intent</th></tr></thead><tbody><tr><td>fiberglass vs gunite pool price</td><td style="text-align:right">210</td><td style="text-align:center;color:var(--green);font-weight:600">5</td><td style="text-align:right">0</td><td><span class="tag tag-green">Commercial</span></td></tr></tbody></table>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">concrete fountain repair</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>480</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>7</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>5.08</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count">1 sub-keyword</span>
+</div>
+</div>
+<div class="accordion-body">
+<table class="sub-table"><thead><tr><th>Sub-Keyword</th><th style="text-align:right">Volume</th><th style="text-align:center">KD</th><th style="text-align:right">CPC</th><th>Intent</th></tr></thead><tbody><tr><td>concrete fountain crack repair</td><td style="text-align:right">260</td><td style="text-align:center;color:var(--green);font-weight:600">7</td><td style="text-align:right">0</td><td><span class="tag tag-blue">Informational</span></td></tr></tbody></table>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">pool deck resurfacing cost</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>480</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>3</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>4.66</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count">2 sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+<table class="sub-table"><thead><tr><th>Sub-Keyword</th><th style="text-align:right">Volume</th><th style="text-align:center">KD</th><th style="text-align:right">CPC</th><th>Intent</th></tr></thead><tbody><tr><td>pool deck refinishing cost</td><td style="text-align:right">170</td><td style="text-align:center;color:var(--green);font-weight:600">7</td><td style="text-align:right">4.66</td><td><span class="tag tag-blue">Informational</span></td></tr><tr><td>concrete pool deck resurfacing cost</td><td style="text-align:right">110</td><td style="text-align:center;color:var(--green);font-weight:600">0</td><td style="text-align:right">5.55</td><td><span class="tag tag-purple">Info+Commercial</span></td></tr></tbody></table>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">icf swimming pool</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>480</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--orange)"><strong>15</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>2.97</strong> <small>CPC</small></span>
+<span class="tag tag-purple">Info+Commercial</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">fiberglass pool resurfacing cost</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>320</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>5</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>3.45</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">fiberglass vs vinyl pool</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>260</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--orange)"><strong>13</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>0.86</strong> <small>CPC</small></span>
+<span class="tag tag-purple">Info+Commercial</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">pool resurfacing options</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>260</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--orange)"><strong>12</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>5.23</strong> <small>CPC</small></span>
+<span class="tag tag-green">Commercial</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">epoxy pool deck resurfacing</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>210</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>8</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>4</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">diy pool resurfacing</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>140</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>7</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>2.05</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count">2 sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+<table class="sub-table"><thead><tr><th>Sub-Keyword</th><th style="text-align:right">Volume</th><th style="text-align:center">KD</th><th style="text-align:right">CPC</th><th>Intent</th></tr></thead><tbody><tr><td>diy pool refinishing</td><td style="text-align:right">90</td><td style="text-align:center;color:var(--orange);font-weight:600">10</td><td style="text-align:right">2.05</td><td><span class="tag tag-blue">Informational</span></td></tr><tr><td>do it yourself pool resurfacing</td><td style="text-align:right">50</td><td style="text-align:center;color:var(--green);font-weight:600">3</td><td style="text-align:right">2.05</td><td><span class="tag tag-blue">Informational</span></td></tr></tbody></table>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">pool resurfacing colors</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>140</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:#e65100"><strong>26</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>3.41</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">fiberglass pool gelcoat problems</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>110</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>3</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>3.86</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">pool deck resurfacing ideas</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>110</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>0</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>5.27</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">pool resurfacing vs replastering</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>110</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>0</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>5.16</strong> <small>CPC</small></span>
+<span class="tag tag-green">Commercial</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">resurfacing paint for pool</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>110</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--orange)"><strong>16</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>0</strong> <small>CPC</small></span>
+<span class="tag tag-green">Commercial</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">how long does plaster last in a swimming pool</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>110</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>0</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>0</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">concrete pool waterproofing</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>90</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>0</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>1.2</strong> <small>CPC</small></span>
+<span class="tag tag-green">Commercial</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">what is swimming pool plaster</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>90</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>0</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>0</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">hairline cracks in swimming pool plaster</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>90</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>2</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>0</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">fiberglass pool gelcoat repair</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>70</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>0</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>0</strong> <small>CPC</small></span>
+<span class="tag tag-outline">&mdash;</span>
+<span class="sub-count">1 sub-keyword</span>
+</div>
+</div>
+<div class="accordion-body">
+<table class="sub-table"><thead><tr><th>Sub-Keyword</th><th style="text-align:right">Volume</th><th style="text-align:center">KD</th><th style="text-align:right">CPC</th><th>Intent</th></tr></thead><tbody><tr><td>fiberglass pool gelcoat replacement</td><td style="text-align:right">50</td><td style="text-align:center;color:var(--green);font-weight:600">1</td><td style="text-align:right">0</td><td><span class="tag tag-blue">Informational</span></td></tr></tbody></table>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">fiberglass vs concrete vs vinyl pools</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>70</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--orange)"><strong>13</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>0.17</strong> <small>CPC</small></span>
+<span class="tag tag-purple">Info+Commercial</span>
+<span class="sub-count">2 sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+<table class="sub-table"><thead><tr><th>Sub-Keyword</th><th style="text-align:right">Volume</th><th style="text-align:center">KD</th><th style="text-align:right">CPC</th><th>Intent</th></tr></thead><tbody><tr><td>vinyl pool vs fiberglass vs concrete</td><td style="text-align:right">40</td><td style="text-align:center;color:var(--orange);font-weight:600">12</td><td style="text-align:right">0.74</td><td><span class="tag tag-green">Commercial</span></td></tr><tr><td>vinyl vs fiberglass vs concrete pool</td><td style="text-align:right">40</td><td style="text-align:center;color:var(--green);font-weight:600">9</td><td style="text-align:right">1.61</td><td><span class="tag tag-purple">Info+Commercial</span></td></tr></tbody></table>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">marcite pool resurfacing</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>70</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:#e65100"><strong>26</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>7.94</strong> <small>CPC</small></span>
+<span class="tag tag-green">Commercial</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">pool slide refinishing</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>70</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>8</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>0</strong> <small>CPC</small></span>
+<span class="tag tag-purple">Info+Commercial</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">how to repair swimming pool plaster</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>40</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--orange)"><strong>13</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>1.78</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">eps foam water absorption</span>
+<span class="tag tag-blue">Blog Post</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>20</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>0</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>0</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="product-page">
+<div class="container">
+<div class="section-num">02&nbsp; Product Page Pages</div>
+<h2>Product Page Pages</h2>
+<p class="lede">Recommended page type: <strong>Product Page</strong> &mdash; 4 keyword clusters, 250 total monthly searches.</p>
+<div style="display:flex;align-items:center;gap:16px;margin:18px 0 24px">
+<div class="stat" style="display:inline-block;padding:12px 20px"><span class="stat-num" style="font-size:1.6em;color:var(--orange)">4</span><div class="stat-label">Clusters</div></div>
+<button class="expand-btn">Expand All</button>
+</div>
+<div class="accordion-list" id="list-product-page">
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">diy pool plaster</span>
+<span class="tag tag-orange">Product Page</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>110</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--orange)"><strong>19</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>3.15</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">swimming pool waterproofing products</span>
+<span class="tag tag-orange">Product Page</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>70</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>6</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>1.19</strong> <small>CPC</small></span>
+<span class="tag tag-green">Commercial</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">fiberglass pool finishes</span>
+<span class="tag tag-orange">Product Page</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>50</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>0</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>3.07</strong> <small>CPC</small></span>
+<span class="tag tag-outline">&mdash;</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">icf pool plaster</span>
+<span class="tag tag-orange">Product Page</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>20</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>0</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>0</strong> <small>CPC</small></span>
+<span class="tag tag-green">Commercial</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="info-page">
+<div class="container">
+<div class="section-num">03&nbsp; Info Page Pages</div>
+<h2>Info Page Pages</h2>
+<p class="lede">Recommended page type: <strong>Info Page</strong> &mdash; 1 keyword cluster, 260 total monthly searches.</p>
+<div style="display:flex;align-items:center;gap:16px;margin:18px 0 24px">
+<div class="stat" style="display:inline-block;padding:12px 20px"><span class="stat-num" style="font-size:1.6em;color:var(--purple)">1</span><div class="stat-label">Clusters</div></div>
+<button class="expand-btn">Expand All</button>
+</div>
+<div class="accordion-list" id="list-info-page">
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">pool plaster color chart</span>
+<span class="tag tag-purple">Info Page</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>260</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--green)"><strong>1</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>1.1</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="tool-page">
+<div class="container">
+<div class="section-num">04&nbsp; Tool Page Pages</div>
+<h2>Tool Page Pages</h2>
+<p class="lede">Recommended page type: <strong>Tool Page</strong> &mdash; 1 keyword cluster, 480 total monthly searches.</p>
+<div style="display:flex;align-items:center;gap:16px;margin:18px 0 24px">
+<div class="stat" style="display:inline-block;padding:12px 20px"><span class="stat-num" style="font-size:1.6em;color:var(--yellow)">1</span><div class="stat-label">Clusters</div></div>
+<button class="expand-btn">Expand All</button>
+</div>
+<div class="accordion-list" id="list-tool-page">
+<div class="accordion-item">
+<div class="accordion-header">
+<div class="acc-left">
+<span class="chevron">&#9660;</span>
+<span class="acc-keyword">pool resurfacing cost calculator</span>
+<span class="tag tag-yellow">Tool Page</span>
+</div>
+<div class="acc-right">
+<span class="acc-metric"><strong>480</strong> <small>vol</small></span>
+<span class="acc-metric" style="color:var(--orange)"><strong>17</strong> <small>KD</small></span>
+<span class="acc-metric"><strong>5.16</strong> <small>CPC</small></span>
+<span class="tag tag-blue">Informational</span>
+<span class="sub-count no-subs">No sub-keywords</span>
+</div>
+</div>
+<div class="accordion-body">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<script>
+document.querySelectorAll('.accordion-header').forEach(function(header) {
+  header.addEventListener('click', function() {
+    this.parentElement.classList.toggle('active');
+  });
+});
+document.querySelectorAll('.expand-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var list = this.closest('section').querySelector('.accordion-list');
+    var items = list.querySelectorAll('.accordion-item');
+    var allOpen = Array.from(items).every(function(i) { return i.classList.contains('active'); });
+    items.forEach(function(i) {
+      if (allOpen) i.classList.remove('active');
+      else i.classList.add('active');
+    });
+    this.textContent = allOpen ? 'Expand All' : 'Collapse All';
+  });
+});
+</script>
+</body>
+</html>
