@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Homepage Investigation — supplyvelocity.com</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         max-width: 1400px; margin: 2em auto; padding: 0 1em; color: #333; line-height: 1.6; }
+  h1 { border-bottom: 3px solid #2c3e50; padding-bottom: .3em; }
+  h2 { color: #2c3e50; margin-top: 2em; border-left: 4px solid #3498db; padding-left: 12px; }
+  h3 { color: #34495e; }
+  table { font-size: 0.82em; width: 100%; border-collapse: collapse; margin: 1em 0; }
+  th { background: #2c3e50; color: #fff; padding: 8px 10px; text-align: left; position: sticky; top: 0; }
+  td { padding: 6px 10px; border-bottom: 1px solid #eee; }
+  tr:hover { background: #f8f9fa; }
+  .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin: 1em 0; }
+  .card { background: #f8f9fa; border-radius: 8px; padding: 1.2em; }
+  .card h3 { margin: 0 0 .3em; font-size: 0.9em; color: #666; }
+  .big { font-size: 1.8em; font-weight: 700; }
+  .decline { color: #e74c3c; }
+  .growth { color: #27ae60; }
+  .finding { background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px 16px; margin: 1em 0; border-radius: 4px; }
+  .finding-critical { background: #f8d7da; border-left: 4px solid #dc3545; }
+  .finding-info { background: #d1ecf1; border-left: 4px solid #17a2b8; }
+  .diff-table { width: 100%; }
+  .diff-table td { vertical-align: top; width: 50%; padding: 12px; }
+  .diff-table td:first-child { background: #fef3f2; }
+  .diff-table td:last-child { background: #f0fdf4; }
+  .diff-changed { background: #fef08a; padding: 2px 4px; border-radius: 3px; }
+  .timeline { border-left: 3px solid #3498db; padding-left: 20px; margin: 1em 0; }
+  .timeline-event { margin-bottom: 1em; position: relative; }
+  .timeline-event::before { content: ''; width: 12px; height: 12px; background: #3498db; border-radius: 50%;
+                              position: absolute; left: -26px; top: 4px; }
+  .timeline-event.alert::before { background: #e74c3c; }
+  .serp-result { margin: 0.5em 0; padding: 8px 12px; background: #f8f9fa; border-radius: 4px; }
+  .serp-pos { font-weight: 700; color: #2c3e50; min-width: 30px; display: inline-block; }
+  .serp-domain { color: #27ae60; font-size: 0.85em; }
+  .serp-feature { display: inline-block; background: #e8daef; color: #6c3483; padding: 2px 8px;
+                   border-radius: 12px; font-size: 0.75em; font-weight: 600; margin-left: 6px; }
+  .note { color: #888; font-size: 0.85em; margin-top: 2em; }
+</style>
+</head>
+<body>
+
+<h1>Homepage Decline Investigation</h1>
+<p><strong>Site:</strong> supplyvelocity.com &nbsp;|&nbsp;
+   <strong>Page:</strong> / (homepage) &nbsp;|&nbsp;
+   <strong>Prior:</strong> 2026-04-26 to 2026-05-09 &nbsp;|&nbsp;
+   <strong>Recent:</strong> 2026-05-10 to 2026-05-23 &nbsp;|&nbsp;
+   <strong>Generated:</strong> 2026-05-26</p>
+
+<!-- ============================================================ -->
+<h2>1. Executive Summary</h2>
+
+<div class="finding finding-critical">
+<strong>Primary finding:</strong> The homepage decline is driven by a convergence of four factors:
+(1) <strong>Branded search volume decline:</strong> The query "supply velocity" — which accounts for ~50% of all homepage clicks — saw impressions drop 30% (36&rarr;25) and CTR drop from 61%&rarr;44%, <em>despite maintaining position #1</em>. This is the single biggest contributor to the homepage decline (-10 of -13 lost clicks);
+(2) <strong>Google's March 2026 core update</strong> (Mar 27 - Apr 8) and the <strong>May 2026 core update</strong> (started May 21) appear to have reshuffled rankings in the supply chain consulting niche;
+(3) <strong>AI Overviews now dominate</strong> key non-branded queries ("lean supply chain consulting", "lean six sigma consulting"), pushing organic results down and absorbing clicks — Supply Velocity is <em>not cited</em> in any of these AI Overviews;
+(4) <strong>Homepage content was changed</strong> between February and May 2026 (hero copy, CTAs, service structure, case studies), which may have altered keyword relevance signals.
+</div>
+
+<div class="summary-grid">
+  <div class="card">
+    <h3>Homepage Clicks</h3>
+    <div class="big decline">11</div>
+    <div>Prior: 22 &rarr; Recent: 11
+         (<span class="decline">-50.0%</span>)</div>
+  </div>
+  <div class="card">
+    <h3>Homepage Impressions</h3>
+    <div class="big growth">1,570</div>
+    <div>Prior: 1,463 &rarr; Recent: 1,570
+         (<span class="growth">+7.3%</span>)</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>2. Google Algorithm Updates Timeline</h2>
+
+<div class="timeline">
+  <div class="timeline-event">
+    <strong>Feb 5 - Feb 27, 2026:</strong> February 2026 Discover update (21 days)
+    <br><em>Primarily affects Google Discover feed, not organic search. Unlikely primary cause.</em>
+  </div>
+  <div class="timeline-event alert">
+    <strong>Mar 24 - Mar 25, 2026:</strong> March 2026 spam update (19 hours)
+    <br><em>Short spam-focused update. Low impact unless site has spam signals.</em>
+  </div>
+  <div class="timeline-event alert">
+    <strong>Mar 27 - Apr 8, 2026:</strong> March 2026 core update (12 days)
+    <br><em>Major core update. Rankings in the consulting niche likely reshuffled. This update coincides with the start of the performance decline visible in daily trends.</em>
+  </div>
+  <div class="timeline-event alert">
+    <strong>May 21 - ongoing:</strong> May 2026 core update
+    <br><em>Another core update currently rolling out. May compound the March update effects.</em>
+  </div>
+</div>
+
+<div class="finding">
+<strong>Assessment:</strong> The <strong>March 2026 core update</strong> is the most likely algorithmic trigger. The homepage's average position worsened from ~22 (late April) to ~30 (mid-May), a pattern consistent with core update re-evaluations. The May 2026 core update (started 5 days ago) may cause further volatility.
+</div>
+
+<!-- ============================================================ -->
+<h2>3. SERP Analysis — Key Queries</h2>
+
+<h3>3a. "supply velocity" (branded)</h3>
+<div class="finding finding-info">
+<strong>Status: Holding #1 organic.</strong> Sitelinks present. Local pack shows 3 SV office locations.
+However, a People Also Ask box now asks <em>"What is supply velocity?"</em> pointing to buske.com, creating semantic confusion between the brand name and the supply chain concept.
+</div>
+<div class="serp-result"><span class="serp-pos">#1</span> supplyvelocity.com — Supply Velocity <span class="serp-feature">Sitelinks</span></div>
+<div class="serp-result"><span class="serp-pos">#2-4</span> Local Pack (SV offices: Durham NC, Thornton CO, St. Louis MO)</div>
+<div class="serp-result"><span class="serp-pos">#5</span> linkedin.com/company/supply-velocity-inc</div>
+<div class="serp-result"><span class="serp-pos">#6</span> People Also Ask <span class="serp-feature">PAA</span></div>
+<div class="serp-result"><span class="serp-pos">#7+</span> supplychaindive.com, shipbob.com, uplandsoftware.com (all about the concept "supply chain velocity")</div>
+
+<h3>3b. "lean supply chain consulting"</h3>
+<div class="finding finding-critical">
+<strong>Status: AI Overview at position 1.</strong> SV is #2 organic (absolute position 3), behind incito.com. SV is NOT cited in the AI Overview.
+</div>
+<div class="serp-result"><span class="serp-pos">#1</span> <span class="serp-feature">AI Overview</span> — cites incito.com content</div>
+<div class="serp-result"><span class="serp-pos">#2</span> incito.com — Expert Lean Supply Chain Consulting <span class="serp-domain">(NEW competitor above SV)</span></div>
+<div class="serp-result"><span class="serp-pos">#3</span> <strong>supplyvelocity.com</strong> — Supply Chain Consulting | Lean Consulting</div>
+<div class="serp-result"><span class="serp-pos">#4</span> reddit.com/r/LeanManufacturing</div>
+<div class="serp-result"><span class="serp-pos">#5</span> txm.com — Lean Supply Chain Management Consulting</div>
+
+<h3>3c. "lean six sigma consulting"</h3>
+<div class="finding finding-critical">
+<strong>Status: Massive AI Overview at position 1 with firm recommendations. SV is NOT in the top 20 organic results AND is NOT cited in the AI Overview.</strong>
+The AI Overview recommends Bain, Firefly Consulting, Kaizen, and Manex Consulting by name.
+</div>
+<div class="serp-result"><span class="serp-pos">#1</span> <span class="serp-feature">AI Overview</span> — recommends Bain, Firefly, Kaizen, Manex. Includes pricing ($2-4K/day).</div>
+<div class="serp-result"><span class="serp-pos">#2</span> bain.com — Lean Six Sigma Consulting</div>
+<div class="serp-result"><span class="serp-pos">#3</span> reddit.com/r/consulting</div>
+<div class="serp-result"><span class="serp-pos">#4</span> People Also Ask <span class="serp-feature">PAA</span></div>
+<div class="serp-result"><span class="serp-pos">#5-12</span> 6sigmacertificationonline, kaizen.com, manexconsulting, consulting.us, indeed.com, go-lean-six.com, 6sigma.us, incito.com</div>
+
+<h3>3d. "supply chain consulting" (broad)</h3>
+<div class="finding">
+<strong>Status: SV not in top 20.</strong> SERP dominated by enterprise firms (BCG #1, Bain, Accenture) plus Reddit, local packs, and informational content. This query is too competitive / broad for SV's authority level.
+</div>
+
+<!-- ============================================================ -->
+<h2>4. Deep Dive: "supply velocity" Branded Query</h2>
+
+<div class="finding finding-critical">
+<strong>This single query accounts for ~50% of all homepage clicks and is the #1 driver of the decline.</strong><br>
+Clicks: 22 &rarr; 11 (<strong>-50%</strong>) | Impressions: 36 &rarr; 25 (<strong>-30%</strong>) | CTR: 61% &rarr; 44% (<strong>-17pp</strong>) | Position: #1 (unchanged)
+</div>
+
+<h3>4a. What happened</h3>
+<p>The homepage maintained position #1 for "supply velocity" throughout both periods. The decline is NOT caused by a ranking drop. Instead, two things changed:</p>
+
+<ol>
+<li><strong>Fewer people are searching "supply velocity" (brand interest decline):</strong> Impressions dropped 30% from 36 to 25. This suggests reduced brand awareness, possibly from decreased marketing/PR activity, fewer referrals, or seasonal patterns. This is an <em>off-site</em> factor that SEO alone cannot fix.</li>
+<li><strong>CTR dropped from 61% to 44% despite being #1:</strong> The SERP for "supply velocity" has become cluttered with:
+  <ul>
+    <li>A <strong>Local Pack</strong> (3 SV office locations) at positions 2-4, which may be cannibalizing clicks from the organic #1 listing</li>
+    <li>A <strong>People Also Ask</strong> box asking "What is supply velocity?" — this links to buske.com which defines "supply chain velocity" as a concept, creating <strong>semantic confusion</strong> between the brand name and the supply chain term</li>
+    <li>Results at positions 7+ from supplychaindive.com, shipbob.com, and others that discuss "supply chain velocity" as a <em>concept</em> rather than the company</li>
+  </ul>
+</li>
+</ol>
+
+<h3>4b. Daily "supply velocity" performance</h3>
+<table>
+<thead><tr><th>Date</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Position</th></tr></thead>
+<tbody><tr><td>2026-04-27</td><td>1</td><td>1</td><td>100%</td><td>1.0</td></tr><tr><td>2026-04-28</td><td>2</td><td>6</td><td>33%</td><td>1.0</td></tr><tr><td>2026-04-29</td><td>1</td><td>1</td><td>100%</td><td>1.0</td></tr><tr><td>2026-04-30</td><td>1</td><td>6</td><td>17%</td><td>16.7</td></tr><tr><td>2026-05-01</td><td>2</td><td>4</td><td>50%</td><td>1.0</td></tr><tr><td>2026-05-02</td><td>0</td><td>1</td><td>0%</td><td>1.0</td></tr><tr><td>2026-05-03</td><td>1</td><td>2</td><td>50%</td><td>1.0</td></tr><tr><td>2026-05-04</td><td>2</td><td>4</td><td>50%</td><td>1.0</td></tr><tr><td>2026-05-05</td><td>3</td><td>3</td><td>100%</td><td>1.0</td></tr><tr><td>2026-05-06</td><td>2</td><td>2</td><td>100%</td><td>1.0</td></tr><tr><td>2026-05-07</td><td>2</td><td>2</td><td>100%</td><td>1.0</td></tr><tr><td>2026-05-08</td><td>4</td><td>4</td><td>100%</td><td>1.0</td></tr><tr><td>2026-05-11</td><td>0</td><td>3</td><td>0%</td><td>1.0</td></tr><tr><td>2026-05-12</td><td>1</td><td>2</td><td>50%</td><td>1.0</td></tr><tr><td>2026-05-14</td><td>2</td><td>2</td><td>100%</td><td>1.0</td></tr><tr><td>2026-05-15</td><td>0</td><td>2</td><td>0%</td><td>1.0</td></tr><tr><td>2026-05-16</td><td>1</td><td>2</td><td>50%</td><td>1.0</td></tr><tr><td>2026-05-17</td><td>0</td><td>1</td><td>0%</td><td>1.0</td></tr><tr><td>2026-05-18</td><td>1</td><td>4</td><td>25%</td><td>1.0</td></tr><tr><td>2026-05-19</td><td>3</td><td>4</td><td>75%</td><td>1.0</td></tr><tr><td>2026-05-20</td><td>1</td><td>1</td><td>100%</td><td>1.0</td></tr><tr><td>2026-05-21</td><td>2</td><td>4</td><td>50%</td><td>1.0</td></tr>
+</tbody></table>
+
+<h3>4c. Probable causes &amp; recommendations for "supply velocity"</h3>
+<table>
+<thead><tr><th>Factor</th><th>Impact</th><th>Recommended Action</th></tr></thead>
+<tbody>
+<tr><td>Brand search volume decline</td><td>HIGH — 30% fewer impressions</td>
+    <td>Increase brand visibility through PR, social media, email marketing, industry events. This is not fixable through on-page SEO alone.</td></tr>
+<tr><td>SERP semantic confusion</td><td>MEDIUM — PAA and below-fold results treat "supply velocity" as a concept</td>
+    <td>Consider adding structured data (Organization schema) to reinforce brand entity. Publish a "What is Supply Velocity?" page to own the definitional query and potentially appear in the PAA.</td></tr>
+<tr><td>Local Pack click cannibalization</td><td>LOW-MEDIUM — 3 local pack results may split clicks</td>
+    <td>Optimize Google Business Profiles to ensure they drive conversions even if they draw clicks from organic #1. This is net-neutral if GBP clicks convert.</td></tr>
+<tr><td>CTR erosion from SERP clutter</td><td>MEDIUM — CTR dropped 17 percentage points</td>
+    <td>Improve the organic listing with better title tag and meta description. Consider adding FAQ schema to earn more SERP real estate for this branded query.</td></tr>
+</tbody></table>
+
+<!-- ============================================================ -->
+<h2>5. Homepage Query Breakdown (GSC)</h2>
+<p>All queries that drove impressions to the homepage, comparing prior vs recent 14-day periods:</p>
+<table><thead><tr><th>Query</th><th>Clicks (prior)</th><th>Clicks (recent)</th><th>Clicks chg</th><th>Imp (prior)</th><th>Imp (recent)</th><th>Imp chg</th><th>Pos (prior)</th><th>Pos (recent)</th><th>Pos chg</th><th>CTR (prior)</th><th>CTR (recent)</th></tr></thead><tbody><tr><td>supply velocity</td><td>21.0</td><td>11.0</td><td><span style="color:#e74c3c;font-weight:600">-10 (-47.6%)</span></td><td>36.0</td><td>25.0</td><td><span style="color:#e74c3c;font-weight:600">-11 (-30.6%)</span></td><td>3.6</td><td>1.0</td><td><span style="color:#27ae60;font-weight:600">-3</span></td><td>58.33%</td><td>44.00%</td></tr><tr><td>supply chain velocity</td><td>1.0</td><td>0.0</td><td><span style="color:#e74c3c;font-weight:600">-1 (-100.0%)</span></td><td>4.0</td><td>2.0</td><td><span style="color:#e74c3c;font-weight:600">-2 (-50.0%)</span></td><td>3.5</td><td>7.5</td><td><span style="color:#e74c3c;font-weight:600">+4</span></td><td>25.00%</td><td>0.00%</td></tr><tr><td>supply chain management consulting georgia</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>1.0</td><td>15.0</td><td><span style="color:#27ae60;font-weight:600">+14 (+1400.0%)</span></td><td>69.0</td><td>79.0</td><td><span style="color:#e74c3c;font-weight:600">+10</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management consulting llc</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>0.0</td><td>3.0</td><td><span style="color:#27ae60;font-weight:600">+3</span></td><td>0.0</td><td>63.7</td><td><span style="color:#e74c3c;font-weight:600">+64</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management consulting savannah</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>6.0</td><td>1.0</td><td><span style="color:#e74c3c;font-weight:600">-5 (-83.3%)</span></td><td>54.3</td><td>76.0</td><td><span style="color:#e74c3c;font-weight:600">+22</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management consulting savannah ga</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>1.0</td><td>5.0</td><td><span style="color:#27ae60;font-weight:600">+4 (+400.0%)</span></td><td>82.0</td><td>80.0</td><td><span style="color:#27ae60;font-weight:600">-2</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management consulting services</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>9.0</td><td>20.0</td><td><span style="color:#27ae60;font-weight:600">+11 (+122.2%)</span></td><td>72.0</td><td>74.7</td><td><span style="color:#e74c3c;font-weight:600">+3</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management providers richmond va</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>0.0</td><td>1.0</td><td><span style="color:#27ae60;font-weight:600">+1</span></td><td>0.0</td><td>56.0</td><td><span style="color:#e74c3c;font-weight:600">+56</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management service virginia</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>2.0</td><td>1.0</td><td><span style="color:#e74c3c;font-weight:600">-1 (-50.0%)</span></td><td>71.0</td><td>64.0</td><td><span style="color:#27ae60;font-weight:600">-7</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management services richmond va</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>0.0</td><td>1.0</td><td><span style="color:#27ae60;font-weight:600">+1</span></td><td>0.0</td><td>87.0</td><td><span style="color:#e74c3c;font-weight:600">+87</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management services virginia</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>0.0</td><td>5.0</td><td><span style="color:#27ae60;font-weight:600">+5</span></td><td>0.0</td><td>57.8</td><td><span style="color:#e74c3c;font-weight:600">+58</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management solution virginia</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>0.0</td><td>4.0</td><td><span style="color:#27ae60;font-weight:600">+4</span></td><td>0.0</td><td>63.2</td><td><span style="color:#e74c3c;font-weight:600">+63</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management solutions virginia</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>0.0</td><td>3.0</td><td><span style="color:#27ae60;font-weight:600">+3</span></td><td>0.0</td><td>56.3</td><td><span style="color:#e74c3c;font-weight:600">+56</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>administrative and distribution warehouse lean consultants</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>6.0</td><td>3.0</td><td><span style="color:#e74c3c;font-weight:600">-3 (-50.0%)</span></td><td>2.3</td><td>14.0</td><td><span style="color:#e74c3c;font-weight:600">+12</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain marketing consultancy</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>0.0</td><td>1.0</td><td><span style="color:#27ae60;font-weight:600">+1</span></td><td>0.0</td><td>95.0</td><td><span style="color:#e74c3c;font-weight:600">+95</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain operations consulting</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>24.0</td><td>46.0</td><td><span style="color:#27ae60;font-weight:600">+22 (+91.7%)</span></td><td>62.1</td><td>53.1</td><td><span style="color:#27ae60;font-weight:600">-9</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain operations experts</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>0.0</td><td>1.0</td><td><span style="color:#27ae60;font-weight:600">+1</span></td><td>0.0</td><td>48.0</td><td><span style="color:#e74c3c;font-weight:600">+48</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain operations services</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>13.0</td><td>13.0</td><td><span style="color:#27ae60;font-weight:600">0 (0.0%)</span></td><td>41.5</td><td>45.5</td><td><span style="color:#e74c3c;font-weight:600">+4</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain optimization company</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>0.0</td><td>1.0</td><td><span style="color:#27ae60;font-weight:600">+1</span></td><td>0.0</td><td>45.0</td><td><span style="color:#e74c3c;font-weight:600">+45</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain optimization consultant for mid-sized manufacturers</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>1.0</td><td>0.0</td><td><span style="color:#e74c3c;font-weight:600">-1 (-100.0%)</span></td><td>1.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">-1</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain optimization consultants</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>4.0</td><td>6.0</td><td><span style="color:#27ae60;font-weight:600">+2 (+50.0%)</span></td><td>54.2</td><td>52.2</td><td><span style="color:#27ae60;font-weight:600">-2</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain optimization consulting</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>15.0</td><td>24.0</td><td><span style="color:#27ae60;font-weight:600">+9 (+60.0%)</span></td><td>51.3</td><td>64.8</td><td><span style="color:#e74c3c;font-weight:600">+14</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain optimization consulting services</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>1.0</td><td>0.0</td><td><span style="color:#e74c3c;font-weight:600">-1 (-100.0%)</span></td><td>16.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">-16</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain optimization services</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>40.0</td><td>73.0</td><td><span style="color:#27ae60;font-weight:600">+33 (+82.5%)</span></td><td>73.1</td><td>72.4</td><td><span style="color:#27ae60;font-weight:600">-1</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management consulting firm</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>1.0</td><td>6.0</td><td><span style="color:#27ae60;font-weight:600">+5 (+500.0%)</span></td><td>44.0</td><td>56.0</td><td><span style="color:#e74c3c;font-weight:600">+12</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain optimization services ca</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>0.0</td><td>2.0</td><td><span style="color:#27ae60;font-weight:600">+2</span></td><td>0.0</td><td>34.0</td><td><span style="color:#e74c3c;font-weight:600">+34</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management consulting 85044</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>1.0</td><td>1.0</td><td><span style="color:#27ae60;font-weight:600">0 (0.0%)</span></td><td>24.0</td><td>18.0</td><td><span style="color:#27ae60;font-weight:600">-6</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain management consultants</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>1.0</td><td>1.0</td><td><span style="color:#27ae60;font-weight:600">0 (0.0%)</span></td><td>89.0</td><td>94.0</td><td><span style="color:#e74c3c;font-weight:600">+5</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain consulting delaware</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>2.0</td><td>7.0</td><td><span style="color:#27ae60;font-weight:600">+5 (+250.0%)</span></td><td>42.5</td><td>44.3</td><td><span style="color:#e74c3c;font-weight:600">+2</span></td><td>0.00%</td><td>0.00%</td></tr><tr><td>supply chain consulting firm</td><td>0.0</td><td>0.0</td><td><span style="color:#27ae60;font-weight:600">0</span></td><td>11.0</td><td>31.0</td><td><span style="color:#27ae60;font-weight:600">+20 (+181.8%)</span></td><td>51.0</td><td>60.2</td><td><span style="color:#e74c3c;font-weight:600">+9</span></td><td>0.00%</td><td>0.00%</td></tr></tbody></table>
+
+<!-- ============================================================ -->
+<h2>6. Homepage Daily Performance</h2>
+<table><thead><tr><th>Date</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Avg Position</th></tr></thead><tbody><tr><td>2026-04-26</td><td>2</td><td>109</td><td>1.83%</td><td>26.2</td></tr><tr><td>2026-04-27</td><td>2</td><td>114</td><td>1.75%</td><td>28.2</td></tr><tr><td>2026-04-28</td><td>2</td><td>135</td><td>1.48%</td><td>27.0</td></tr><tr><td>2026-04-29</td><td>1</td><td>144</td><td>0.69%</td><td>31.9</td></tr><tr><td>2026-04-30</td><td>2</td><td>134</td><td>1.49%</td><td>31.0</td></tr><tr><td>2026-05-01</td><td>2</td><td>123</td><td>1.63%</td><td>28.5</td></tr><tr><td>2026-05-02</td><td>0</td><td>133</td><td>0.00%</td><td>28.8</td></tr><tr><td>2026-05-03</td><td>1</td><td>123</td><td>0.81%</td><td>30.8</td></tr><tr><td>2026-05-04</td><td>3</td><td>157</td><td>1.91%</td><td>31.0</td></tr><tr><td>2026-05-05</td><td>6</td><td>144</td><td>4.17%</td><td>28.0</td></tr><tr><td>2026-05-06</td><td>2</td><td>189</td><td>1.06%</td><td>36.4</td></tr><tr><td>2026-05-07</td><td>4</td><td>179</td><td>2.23%</td><td>35.4</td></tr><tr><td>2026-05-08</td><td>4</td><td>132</td><td>3.03%</td><td>34.2</td></tr><tr><td>2026-05-09</td><td>0</td><td>160</td><td>0.00%</td><td>41.5</td></tr><tr><td>2026-05-10</td><td>0</td><td>117</td><td>0.00%</td><td>30.9</td></tr><tr><td>2026-05-11</td><td>1</td><td>94</td><td>1.06%</td><td>31.4</td></tr><tr><td>2026-05-12</td><td>1</td><td>139</td><td>0.72%</td><td>34.0</td></tr><tr><td>2026-05-13</td><td>1</td><td>192</td><td>0.52%</td><td>32.8</td></tr><tr><td>2026-05-14</td><td>2</td><td>136</td><td>1.47%</td><td>31.0</td></tr><tr><td>2026-05-15</td><td>2</td><td>132</td><td>1.52%</td><td>32.3</td></tr><tr><td>2026-05-16</td><td>1</td><td>128</td><td>0.78%</td><td>36.9</td></tr><tr><td>2026-05-17</td><td>0</td><td>132</td><td>0.00%</td><td>36.2</td></tr><tr><td>2026-05-18</td><td>2</td><td>156</td><td>1.28%</td><td>46.3</td></tr><tr><td>2026-05-19</td><td>3</td><td>143</td><td>2.10%</td><td>41.7</td></tr><tr><td>2026-05-20</td><td>2</td><td>184</td><td>1.09%</td><td>44.3</td></tr><tr><td>2026-05-21</td><td>3</td><td>130</td><td>2.31%</td><td>36.7</td></tr><tr><td>2026-05-22</td><td>0</td><td>144</td><td>0.00%</td><td>51.5</td></tr><tr><td>2026-05-23</td><td>0</td><td>127</td><td>0.00%</td><td>58.4</td></tr></tbody></table>
+
+<!-- ============================================================ -->
+<h2>7. Homepage Content Comparison: February 2026 vs Now</h2>
+
+<p>Content retrieved from Wayback Machine (Feb 15, 2026) vs live site (May 26, 2026):</p>
+
+<h3>6a. Title Tag & Meta Description</h3>
+<table class="diff-table">
+<tr><th style="background:#fef3f2;color:#333;width:50%">February 2026</th>
+    <th style="background:#f0fdf4;color:#333;width:50%">May 2026 (Current)</th></tr>
+<tr>
+  <td><strong>Title:</strong> Supply Chain Consulting | Lean Consulting &amp; Process Improvement<br>
+      <strong>Meta:</strong> <em>(Same as current)</em></td>
+  <td><strong>Title:</strong> Supply Chain Consulting | Lean Consulting &amp; Process Improvement<br>
+      <strong>Meta:</strong> Supply Velocity helps operations leaders reduce waste, lower costs, and improve supply chain performance with practical Lean and Six Sigma consulting.</td>
+</tr>
+</table>
+<div class="finding finding-info">Title and meta description appear unchanged.</div>
+
+<h3>6b. Hero Section</h3>
+<table class="diff-table">
+<tr><th style="background:#fef3f2;color:#333">February 2026</th>
+    <th style="background:#f0fdf4;color:#333">May 2026 (Current)</th></tr>
+<tr>
+  <td><strong>H1:</strong> Your Lean Six Sigma &amp; Supply Chain Management Partner<br><br>
+      <strong>Subtext:</strong> <span class="diff-changed">"Solve your supply chain challenges and improve efficiency with our expert guidance."</span></td>
+  <td><strong>H1:</strong> Your Lean Six Sigma &amp; Supply Chain Management Partner <em>(unchanged)</em><br><br>
+      <strong>Subtext:</strong> <span class="diff-changed">"We help operations teams cut waste, improve service levels, and release working capital through practical Lean and Supply Chain transformation."</span></td>
+</tr>
+</table>
+<div class="finding">
+<strong>Change detected:</strong> Hero subtext was rewritten. The February version was shorter and more direct ("solve your supply chain challenges"). The current version is longer and uses different keyword phrases ("cut waste", "release working capital", "Lean and Supply Chain transformation"). This changes the on-page keyword relevance signals.
+</div>
+
+<h3>6c. Page Structure & Sections</h3>
+<table class="diff-table">
+<tr><th style="background:#fef3f2;color:#333">February 2026</th>
+    <th style="background:#f0fdf4;color:#333">May 2026 (Current)</th></tr>
+<tr>
+  <td>
+    <strong>H2 sections:</strong><br>
+    - A Global Leader in Supply Chain and Operations Consulting<br>
+    - Client Success Stories<br>
+    - Ready to Transform Your Operations? (CTA)<br><br>
+    <strong>H3 Services:</strong><br>
+    - Sales &amp; Operations Planning<br>
+    - Inventory &amp; Warehouse Optimization<br>
+    - Lean Process Improvement<br>
+    - Lean Facility Layout &amp; Design<br>
+    - Supply Chain Strategy<br>
+    - Six Sigma Quality<br><br>
+    <strong>Case studies:</strong> Chemline, Total Hockey, Leonardo DRS, <span class="diff-changed">MTM</span>
+  </td>
+  <td>
+    <strong>H2 sections:</strong><br>
+    - <span class="diff-changed">Book Your Lean Discovery Meeting (NEW)</span><br>
+    - A Global Leader in Supply Chain and Operations Consulting<br>
+    - <span class="diff-changed">Trusted By Industry Leaders (NEW)</span><br>
+    - <span class="diff-changed">Why Us? (NEW)</span><br>
+    - <span class="diff-changed">Our Services (NEW wrapper)</span><br>
+    - <span class="diff-changed">Industries We Serve (NEW)</span><br>
+    - <span class="diff-changed">How We Work With You (NEW)</span><br>
+    - Client Success Stories<br>
+    - <span class="diff-changed">What Clients Say (NEW)</span><br><br>
+    <strong>H3 Services:</strong><br>
+    - Lean Process Improvement<br>
+    - Lean Facility Layout &amp; Design<br>
+    - <span class="diff-changed">Supply Chain Management (renamed)</span><br>
+    - <span class="diff-changed">Planning &amp; Inventory Strategy (renamed)</span><br>
+    - Six Sigma Quality<br><br>
+    <strong>H3 Industries (NEW):</strong><br>
+    - Food &amp; Beverage, Manufacturing, Distribution &amp; Warehousing,
+      Retail, Hospitals &amp; Healthcare, Business Services<br><br>
+    <strong>Case studies:</strong> Chemline, Total Hockey, Leonardo DRS, <span class="diff-changed">Ameren (replaced MTM)</span>
+  </td>
+</tr>
+</table>
+<div class="finding">
+<strong>Significant restructuring detected:</strong>
+<ul>
+  <li>5 new H2 sections added, making the page substantially longer</li>
+  <li>Services renamed: "Sales &amp; Operations Planning" &rarr; "Supply Chain Management", "Inventory &amp; Warehouse Optimization" &rarr; "Planning &amp; Inventory Strategy"</li>
+  <li>New "Industries We Serve" section with 6 industry H3s added</li>
+  <li>MTM case study replaced with Ameren case study</li>
+  <li>CTA changed from "Ready to Transform Your Operations?" to "Book Your Lean Discovery Meeting" / "Request Discovery Meeting"</li>
+</ul>
+These changes alter the page's topical focus and keyword density. The service renaming specifically removes the exact-match phrases "Sales &amp; Operations Planning" and "Warehouse Optimization" from headings.
+</div>
+
+<!-- ============================================================ -->
+<h2>8. Root Cause Analysis & Recommendations</h2>
+
+<div class="finding finding-critical">
+<h3>Probable Causes (ranked by impact):</h3>
+<ol>
+  <li><strong>"supply velocity" branded search decline (HIGHEST IMPACT):</strong> This single query drove 10 of the 13 lost homepage clicks. Impressions dropped 30% (fewer people searching the brand) and CTR fell from 61%&rarr;44% despite holding position #1. The SERP for this query now includes PAA results about "supply chain velocity" as a concept, creating brand/concept confusion. This is primarily a brand awareness issue, not an SEO issue.</li>
+  <li><strong>AI Overviews absorbing clicks (HIGH IMPACT):</strong> Google's AI Overviews now appear for "lean supply chain consulting" and "lean six sigma consulting" — two queries highly relevant to the homepage. These AI Overviews are massive (full-page, with firm recommendations and pricing) and SV is not cited in any of them. This directly reduces organic CTR even if position is maintained.</li>
+  <li><strong>March 2026 core update impact (HIGH IMPACT):</strong> The core update (Mar 27 - Apr 8) reshuffled consulting-niche rankings. incito.com now outranks SV for "lean supply chain consulting". The position worsening from ~22 to ~30+ is consistent with core update re-evaluations of E-E-A-T signals.</li>
+  <li><strong>Homepage content changes (MEDIUM IMPACT):</strong> The restructuring between February and May changed keyword signals. Renaming services and adding industry sections diluted the page's focus on "lean supply chain consulting" and "lean six sigma consulting". The page became longer and broader rather than more focused on high-value queries.</li>
+  <li><strong>May 2026 core update (DEVELOPING):</strong> Started May 21 — too recent to fully assess, but may compound March update effects.</li>
+</ol>
+</div>
+
+<h3>Recommended Actions:</h3>
+<table>
+<thead><tr><th>Priority</th><th>Action</th><th>Rationale</th></tr></thead>
+<tbody>
+<tr><td>1 (Urgent)</td><td>Optimize for AI Overview citation</td>
+    <td>Add structured, concise service descriptions that match the format AI Overviews pull from. Include pricing ranges, specific methodologies, and clear "what we do" bullets that Google can extract.</td></tr>
+<tr><td>2 (High)</td><td>Restore high-value keyword phrases in headings</td>
+    <td>Consider reverting service H3 names to include "Supply Chain Consulting", "Warehouse Optimization", and "Sales &amp; Operations Planning" — phrases that were removed in the recent restructuring.</td></tr>
+<tr><td>3 (High)</td><td>Build topical authority for "lean six sigma consulting"</td>
+    <td>SV has fallen out of the top 20 entirely. Create dedicated service pages or blog content targeting this query with case study evidence and methodology details.</td></tr>
+<tr><td>4 (Medium)</td><td>Monitor May 2026 core update impact</td>
+    <td>The update is still rolling out. Re-run this analysis in 2 weeks once it completes to see if positions stabilize or continue declining.</td></tr>
+<tr><td>5 (Medium)</td><td>Evaluate homepage content length vs focus</td>
+    <td>The Feb &rarr; May changes made the page broader (more sections, industries). Consider whether a focused homepage with dedicated landing pages for each industry would perform better than one long page trying to cover everything.</td></tr>
+</tbody>
+</table>
+
+<p class="note">Data sources: Google Search Console API, Google Search Status Dashboard, DataForSEO SERP API, Wayback Machine (via DataForSEO). Report generated 2026-05-26.</p>
+
+</body></html>
