@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local SEO Audit — Mackey Pools &amp; Spas | mackeypools.com</title>
+<style>
+  :root {
+    --primary: #0f3460;
+    --accent: #e94560;
+    --accent2: #16213e;
+    --success: #27ae60;
+    --warning: #f39c12;
+    --danger: #e74c3c;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --muted: #6c757d;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: #f0f2f5; line-height: 1.6; }
+
+  .report-header {
+    background: linear-gradient(135deg, var(--primary) 0%, #1a4a8a 50%, var(--accent2) 100%);
+    color: white; padding: 50px 40px 40px; text-align: center;
+  }
+  .report-header .badge { background: var(--accent); display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  .report-header h1 { font-size: 2.4em; font-weight: 800; margin-bottom: 8px; }
+  .report-header .subtitle { font-size: 1.1em; opacity: 0.85; margin-bottom: 20px; }
+  .report-meta { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
+  .report-meta .meta-item { text-align: center; }
+  .report-meta .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
+  .report-meta .meta-value { font-size: 15px; font-weight: 600; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+
+  .section { background: white; border-radius: 12px; padding: 35px; margin-bottom: 30px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid var(--border); }
+  .section-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .icon-red { background: #fde8e8; }
+  .icon-blue { background: #e8f0fe; }
+  .icon-green { background: #e8f8f1; }
+  .icon-orange { background: #fff3e0; }
+  .icon-purple { background: #f3e5f5; }
+  .section-title { font-size: 1.4em; font-weight: 700; color: var(--primary); }
+  .section-subtitle { font-size: 0.9em; color: var(--muted); margin-top: 2px; }
+
+  .exec-summary { background: linear-gradient(135deg, #0f3460, #16213e); color: white; border-radius: 12px; padding: 35px; margin-bottom: 30px; }
+  .exec-summary h2 { font-size: 1.6em; margin-bottom: 8px; }
+  .exec-summary .subtitle-text { opacity: 0.8; margin-bottom: 25px; }
+  .exec-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 15px; margin-bottom: 25px; }
+  .kpi-card { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 18px; text-align: center; border: 1px solid rgba(255,255,255,0.15); }
+  .kpi-value { font-size: 2.2em; font-weight: 800; line-height: 1; }
+  .kpi-value.red { color: #ff6b6b; }
+  .kpi-value.orange { color: #ffd93d; }
+  .kpi-value.green { color: #6bcb77; }
+  .kpi-label { font-size: 12px; opacity: 0.8; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .critical-alerts { background: rgba(233,69,96,0.2); border: 1px solid rgba(233,69,96,0.5); border-radius: 10px; padding: 20px; }
+  .critical-alerts h3 { color: #ff9999; margin-bottom: 12px; font-size: 1em; text-transform: uppercase; letter-spacing: 1px; }
+  .alert-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 0.92em; }
+  .alert-item:last-child { margin-bottom: 0; }
+  .alert-bullet { background: var(--accent); border-radius: 50%; min-width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  .badge-pill { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .badge-danger { background: #fde8e8; color: var(--danger); }
+  .badge-warning { background: #fff3e0; color: #e67e22; }
+  .badge-success { background: #e8f8f1; color: var(--success); }
+  .badge-muted { background: #f0f2f5; color: var(--muted); }
+  .badge-primary { background: #e8f0fe; color: var(--primary); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { background: var(--primary); color: white; padding: 11px 14px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+  tr:nth-child(even) td { background: #fbfcfd; }
+
+  .callout { border-radius: 8px; padding: 16px 18px; margin: 15px 0; }
+  .callout-danger { background: #fdf0f0; border-left: 4px solid var(--danger); }
+  .callout-warning { background: #fffbf0; border-left: 4px solid var(--warning); }
+  .callout-success { background: #f0faf5; border-left: 4px solid var(--success); }
+  .callout-info { background: #f0f5ff; border-left: 4px solid var(--primary); }
+  .callout strong { display: block; margin-bottom: 4px; font-size: 0.95em; }
+  .callout p { font-size: 0.9em; color: #444; line-height: 1.5; }
+
+  .score-bar-wrap { margin: 8px 0; }
+  .score-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+  .score-bar { height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 4px; }
+  .fill-green { background: var(--success); }
+  .fill-orange { background: var(--warning); }
+  .fill-red { background: var(--danger); }
+
+  .comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 15px; }
+  .comp-card { border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .comp-card.winner { border-color: #27ae60; border-width: 2px; }
+  .comp-card.client { border-color: var(--accent); border-width: 2px; background: #fff8f8; }
+  .comp-name { font-weight: 700; font-size: 1em; margin-bottom: 6px; }
+  .comp-rating { font-size: 1.3em; font-weight: 800; }
+  .comp-rating .stars { color: #f39c12; font-size: 0.8em; }
+  .comp-stat { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .comp-features { margin-top: 12px; }
+  .comp-feature-item { display: flex; align-items: flex-start; gap: 6px; font-size: 12px; margin-bottom: 5px; }
+  .check { color: var(--success); font-weight: 700; flex-shrink: 0; }
+  .cross { color: var(--danger); font-weight: 700; flex-shrink: 0; }
+
+  .priority-section { margin-bottom: 24px; }
+  .priority-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .priority-badge { padding: 5px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .priority-critical { background: #fde8e8; color: var(--danger); border: 1px solid #f5c6c6; }
+  .priority-high { background: #fff3e0; color: #e67e22; border: 1px solid #ffe0b2; }
+  .priority-medium { background: #e8f0fe; color: var(--primary); border: 1px solid #c5d9f7; }
+  .priority-ongoing { background: #f0faf5; color: var(--success); border: 1px solid #b8e8c8; }
+  .action-item { background: var(--light-bg); border-radius: 8px; padding: 14px 16px; margin-bottom: 8px; }
+  .action-item-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .action-item-desc { font-size: 13px; color: #555; line-height: 1.5; }
+  .action-item-meta { font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+  .roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 10px; }
+  .roadmap-phase { background: var(--light-bg); border-radius: 10px; padding: 20px; border-top: 4px solid; }
+  .roadmap-phase:nth-child(1) { border-color: var(--danger); }
+  .roadmap-phase:nth-child(2) { border-color: var(--warning); }
+  .roadmap-phase:nth-child(3) { border-color: var(--success); }
+  .roadmap-phase h4 { font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .roadmap-phase ul { list-style: none; padding: 0; }
+  .roadmap-phase ul li { font-size: 13px; padding: 5px 0; border-bottom: 1px solid #e9ecef; display: flex; align-items: flex-start; gap: 6px; }
+  .roadmap-phase ul li::before { content: "->"; color: var(--muted); flex-shrink: 0; }
+  .roadmap-phase ul li:last-child { border-bottom: none; }
+
+  .screenshot-wrap { margin: 16px 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+  .screenshot-wrap img { width: 100%; display: block; }
+  .screenshot-caption { background: #f8f9fa; padding: 8px 12px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+
+  .nap-match { color: var(--success); font-weight: 600; }
+  .nap-mismatch { color: var(--danger); font-weight: 600; }
+  .nap-missing { color: var(--muted); font-style: italic; }
+
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 14px; margin: 16px 0; }
+  .metric-card { background: var(--light-bg); border-radius: 8px; padding: 16px; text-align: center; border: 1px solid var(--border); }
+  .metric-value { font-size: 1.8em; font-weight: 800; line-height: 1; }
+  .metric-value.good { color: var(--success); }
+  .metric-value.ok { color: var(--warning); }
+  .metric-value.bad { color: var(--danger); }
+  .metric-label { font-size: 11px; color: var(--muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .metric-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .rank-none { color: var(--danger); font-style: italic; }
+
+  .report-footer { text-align: center; padding: 30px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 768px) {
+    .roadmap { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .exec-kpis { grid-template-columns: repeat(2, 1fr); }
+    .report-header h1 { font-size: 1.8em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="report-header">
+  <div class="badge">Local SEO &amp; Google Maps Audit</div>
+  <h1>Mackey Pools &amp; Spas</h1>
+  <div class="subtitle">mackeypools.com &nbsp;&middot;&nbsp; Denver, CO Metro</div>
+  <div class="report-meta">
+    <div class="meta-item"><div class="meta-label">Audit Date</div><div class="meta-value">June 2, 2026</div></div>
+    <div class="meta-item"><div class="meta-label">Domain</div><div class="meta-value">mackeypools.com</div></div>
+    <div class="meta-item"><div class="meta-label">Market</div><div class="meta-value">Denver Metro, CO</div></div>
+    <div class="meta-item"><div class="meta-label">Business Type</div><div class="meta-value">Custom Pool &amp; Spa Builder</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="exec-summary">
+  <h2>Executive Summary</h2>
+  <p class="subtitle-text">Mackey Pools &amp; Spas has a strong 20-year reputation but is nearly invisible online. The combination of a 1-star GBP, no phone on the listing, placeholder content on the website, and zero organic visibility means the business is capturing no inbound leads from Google &mdash; while competitors with far fewer years of experience dominate the local pack.</p>
+  <div class="exec-kpis">
+    <div class="kpi-card"><div class="kpi-value red">1&#9733;</div><div class="kpi-label">Google Rating (1 review)</div></div>
+    <div class="kpi-card"><div class="kpi-value red">0/7</div><div class="kpi-label">Local Pack Appearances</div></div>
+    <div class="kpi-card"><div class="kpi-value red">2</div><div class="kpi-label">Keywords Ranking Organically</div></div>
+    <div class="kpi-card"><div class="kpi-value orange">$12</div><div class="kpi-label">Est. Monthly Traffic Value</div></div>
+    <div class="kpi-card"><div class="kpi-value red">None</div><div class="kpi-label">Phone on GBP Listing</div></div>
+    <div class="kpi-card"><div class="kpi-value green">89</div><div class="kpi-label">Lighthouse Performance Score</div></div>
+  </div>
+  <div class="critical-alerts">
+    <h3>Top 5 Critical Issues</h3>
+    <div class="alert-item"><div class="alert-bullet">1</div><div>GBP has 1 review at 1 star &mdash; a 4-year-old complaint about a $250,000 pool project. Zero owner responses in 4 years. This is the first thing any potential client sees on Google.</div></div>
+    <div class="alert-item"><div class="alert-bullet">2</div><div>No phone number on the Google Business Profile. GBP shows the "Add phone number" prompt. This signals an abandoned listing to Google's local algorithm.</div></div>
+    <div class="alert-item"><div class="alert-bullet">3</div><div>LocalBusiness schema has a placeholder phone number (123 456 7890) and wrong ZIP code (80014 = Aurora, CO). Google is reading fake contact data from the schema.</div></div>
+    <div class="alert-item"><div class="alert-bullet">4</div><div>Services page (/services) contains unfilled Wix default placeholder text: "I'm a paragraph. Click here to add your own text..." This page is indexed by Google.</div></div>
+    <div class="alert-item"><div class="alert-bullet">5</div><div>Homepage has no H1 tag. Phone number is in H2. Only 168 words of content. Competitors average 800-1,500+ words on their homepages.</div></div>
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon icon-red">&#128205;</div>
+    <div>
+      <div class="section-title">Section 1: Google Maps / Local Pack Rankings</div>
+      <div class="section-subtitle">Keyword visibility audit for Denver, CO &mdash; June 2, 2026</div>
+    </div>
+  </div>
+
+  <div class="callout callout-danger">
+    <strong>Mackey Pools does not appear in the local pack for any target keyword tested.</strong>
+    <p>Across all 7 high-value keywords, Mackey Pools &amp; Spas is completely absent from Google's Maps 3-pack. This is directly caused by the 1-star GBP rating, missing phone number, and no review velocity. The same 3 competitors dominate across every keyword.</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Keyword</th>
+        <th>Mackey Position</th>
+        <th>Local Pack #1</th>
+        <th>Local Pack #2</th>
+        <th>Local Pack #3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>pool builder denver co</strong></td>
+        <td class="rank-none">Not in local pack</td>
+        <td>Integrity Pool Builders 4.9&#9733; (99)</td>
+        <td>Rocky Mountain Pool Builders 5.0&#9733; (1)</td>
+        <td>Aquality Pools &amp; Spas 4.9&#9733; (72)</td>
+      </tr>
+      <tr>
+        <td><strong>custom pool builder denver</strong></td>
+        <td class="rank-none">Not in local pack</td>
+        <td>Integrity Pool Builders 4.9&#9733; (99)</td>
+        <td>Wetworks Pool &amp; Spa 4.9&#9733; (18)</td>
+        <td>Aquality Pools &amp; Spas 4.9&#9733; (72)</td>
+      </tr>
+      <tr>
+        <td><strong>pool contractor denver</strong></td>
+        <td class="rank-none">Not in local pack</td>
+        <td>Integrity Pool Builders 4.9&#9733; (99)</td>
+        <td>Wetworks Pool &amp; Spa 4.9&#9733; (18)</td>
+        <td>Aquality Pools &amp; Spas 4.9&#9733; (72)</td>
+      </tr>
+      <tr>
+        <td><strong>inground pool builder denver</strong></td>
+        <td class="rank-none">Not in local pack</td>
+        <td>Integrity Pool Builders 4.9&#9733; (99)</td>
+        <td>Wetworks Pool &amp; Spa 4.9&#9733; (18)</td>
+        <td>Aquality Pools &amp; Spas 4.9&#9733; (72)</td>
+      </tr>
+      <tr>
+        <td><strong>pool renovation denver co</strong></td>
+        <td class="rank-none">Not in local pack</td>
+        <td>Wetworks Pool &amp; Spa 4.9&#9733; (18)</td>
+        <td>Laguna Pools 4.7&#9733; (27)</td>
+        <td>Integrity Pool Builders 4.9&#9733; (99)</td>
+      </tr>
+      <tr>
+        <td><strong>custom spa builder denver</strong></td>
+        <td class="rank-none">Not in local pack</td>
+        <td>Wetworks Pool &amp; Spa 4.9&#9733; (18)</td>
+        <td>Integrity Pool Builders 4.9&#9733; (99)</td>
+        <td>Aquality Pools &amp; Spas 4.9&#9733; (72)</td>
+      </tr>
+      <tr>
+        <td><strong>water features denver co</strong></td>
+        <td class="rank-none">Not in local pack</td>
+        <td>Reflections Water Features 4.5&#9733; (16)</td>
+        <td>Supreme Landscapers Denver</td>
+        <td>Various landscapers</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;">
+    <div class="screenshot-wrap">
+      <img src="screenshots/serp-pool-builder-denver.png" alt="Google Maps results for pool builder denver co">
+      <div class="screenshot-caption">Google Maps &mdash; "pool builder denver co" &mdash; Mackey Pools absent from results</div>
+    </div>
+    <div class="screenshot-wrap">
+      <img src="screenshots/serp-custom-pool-builder-denver.png" alt="Google Maps results for custom pool builder denver">
+      <div class="screenshot-caption">Google Maps &mdash; "custom pool builder denver" &mdash; Mackey Pools absent from results</div>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-top:16px;">
+    <strong>Key Insight: Review count is NOT the primary gating factor here</strong>
+    <p>Rocky Mountain Pool Builders ranks #2 in the local pack with only 1 review. Wetworks ranks top 3 with only 18 reviews. The 1-star rating is the specific suppression signal for Mackey. Getting to 4.5+ stars with even 10-15 reviews could put Mackey back in the pack within 60-90 days.</p>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon icon-red">&#127970;</div>
+    <div>
+      <div class="section-title">Section 2: Google Business Profile Audit</div>
+      <div class="section-subtitle">CID: 18160561564979952616 &mdash; Place ID: ChIJPViVO2l_a4cR6Ps9SoZGB_w</div>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:20px;">
+    <div>
+      <table>
+        <thead><tr><th colspan="2">GBP Listing Details</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Business Name</strong></td><td>Mackey Pools &amp; Spas</td></tr>
+          <tr><td><strong>Category</strong></td><td>Swimming Pool Contractor</td></tr>
+          <tr><td><strong>Rating</strong></td><td style="color:var(--danger);font-weight:800;">1.0 / 5.0 &#9733;</td></tr>
+          <tr><td><strong>Review Count</strong></td><td style="color:var(--danger);font-weight:700;">1 review</td></tr>
+          <tr><td><strong>Phone on GBP</strong></td><td><span class="badge-pill badge-danger">MISSING &mdash; not listed</span></td></tr>
+          <tr><td><strong>Address on GBP</strong></td><td><span class="badge-pill badge-warning">Service area (no address shown)</span></td></tr>
+          <tr><td><strong>GBP Coordinates</strong></td><td>39.696, -105.294 (Conifer/Golden foothills)</td></tr>
+          <tr><td><strong>Website Link</strong></td><td>mackeypools.com &#10003;</td></tr>
+          <tr><td><strong>Business Description</strong></td><td><span class="badge-pill badge-danger">Not written</span></td></tr>
+          <tr><td><strong>Services Section</strong></td><td><span class="badge-pill badge-danger">Not populated</span></td></tr>
+          <tr><td><strong>Secondary Categories</strong></td><td><span class="badge-pill badge-danger">None added</span></td></tr>
+          <tr><td><strong>Google Posts</strong></td><td><span class="badge-pill badge-danger">None detected</span></td></tr>
+          <tr><td><strong>Owner Response to Reviews</strong></td><td><span class="badge-pill badge-danger">Never responded (4 years)</span></td></tr>
+          <tr><td><strong>Q&amp;A Section</strong></td><td><span class="badge-pill badge-danger">Not populated</span></td></tr>
+          <tr><td><strong>Photos</strong></td><td>Some owner-selected photos present</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="screenshot-wrap">
+        <img src="screenshots/gbp-listing-primary.png" alt="Mackey Pools GBP listing on Google Maps">
+        <div class="screenshot-caption">Mackey Pools &amp; Spas Google Business Profile &mdash; 1 review at 1 star, no phone number listed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-danger">
+    <strong>The Single 1-Star Review (verbatim, auto-translated from Google's display):</strong>
+    <p>"Two-year custom built-in pool and spa worth $250,000, tiles falling off left and right. Sent a man to try to fix the tiles but they still fall off. Stop coming, stop returning calls. Don't use this fraudster. It's good that Klear Pools managed to fix this mess." &mdash; Posted 4 years ago. Zero responses from owner.</p>
+  </div>
+
+  <div class="callout callout-warning">
+    <strong>GBP Location is ~25 Miles from Denver</strong>
+    <p>The GBP coordinates (39.696 N, 105.294 W) place the listing in the Conifer/Golden foothills area, approximately 25 miles southwest of downtown Denver. For a service area business targeting Denver metro, this reduces proximity relevance for city-center searches. The service area should explicitly include all target cities: Denver, Englewood, Cherry Hills Village, Greenwood Village, Lone Tree, Castle Rock, Littleton, and Highlands Ranch.</p>
+  </div>
+
+  <h3 style="margin-top:20px; margin-bottom:12px; font-size:1em; color:var(--primary);">GBP Completion Scorecard</h3>
+  <div class="score-bar-wrap"><div class="score-label"><span>Phone Number</span><span style="color:var(--danger);">0% &mdash; Missing</span></div><div class="score-bar"><div class="score-bar-fill fill-red" style="width:0%"></div></div></div>
+  <div class="score-bar-wrap"><div class="score-label"><span>Business Description</span><span style="color:var(--danger);">0% &mdash; Not written</span></div><div class="score-bar"><div class="score-bar-fill fill-red" style="width:0%"></div></div></div>
+  <div class="score-bar-wrap"><div class="score-label"><span>Services Section</span><span style="color:var(--danger);">0% &mdash; Empty</span></div><div class="score-bar"><div class="score-bar-fill fill-red" style="width:0%"></div></div></div>
+  <div class="score-bar-wrap"><div class="score-label"><span>Secondary Categories</span><span style="color:var(--danger);">0% &mdash; None added</span></div><div class="score-bar"><div class="score-bar-fill fill-red" style="width:0%"></div></div></div>
+  <div class="score-bar-wrap"><div class="score-label"><span>Google Posts Activity</span><span style="color:var(--danger);">0% &mdash; Never posted</span></div><div class="score-bar"><div class="score-bar-fill fill-red" style="width:0%"></div></div></div>
+  <div class="score-bar-wrap"><div class="score-label"><span>Review Response Rate</span><span style="color:var(--danger);">0% &mdash; 0 of 1 reviews answered</span></div><div class="score-bar"><div class="score-bar-fill fill-red" style="width:0%"></div></div></div>
+  <div class="score-bar-wrap"><div class="score-label"><span>Photos / Media</span><span style="color:var(--warning);">40% &mdash; Some present</span></div><div class="score-bar"><div class="score-bar-fill fill-orange" style="width:40%"></div></div></div>
+  <div class="score-bar-wrap"><div class="score-label"><span>Website Link</span><span style="color:var(--success);">100% &mdash; Linked correctly</span></div><div class="score-bar"><div class="score-bar-fill fill-green" style="width:100%"></div></div></div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon icon-blue">&#128295;</div>
+    <div>
+      <div class="section-title">Section 3: Website Technical SEO</div>
+      <div class="section-subtitle">Schema audit, on-page analysis, content review</div>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:12px; font-size:1em; color:var(--primary);">3A &mdash; Schema Markup Audit (Google Rich Results Test)</h3>
+  <div class="two-col">
+    <div>
+      <p style="margin-bottom:12px; font-size:14px;">LocalBusiness and Organization schema are present on the homepage. However, the LocalBusiness schema contains critical errors &mdash; specifically a fake placeholder phone number and incorrect ZIP code that was never updated from the Wix default.</p>
+      <table>
+        <thead><tr><th>Schema Field</th><th>Current Value</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>@type</td><td>LocalBusiness</td><td><span class="badge-pill badge-success">OK</span></td></tr>
+          <tr><td>name</td><td>Mackey Pools &amp; Spas</td><td><span class="badge-pill badge-success">OK</span></td></tr>
+          <tr><td>url</td><td>https://www.mackeypools.com/</td><td><span class="badge-pill badge-success">OK</span></td></tr>
+          <tr><td>telephone</td><td><strong style="color:var(--danger);">123 456 7890</strong></td><td><span class="badge-pill badge-danger">PLACEHOLDER!</span></td></tr>
+          <tr><td>addressLocality</td><td>Denver</td><td><span class="badge-pill badge-success">OK</span></td></tr>
+          <tr><td>addressRegion</td><td>CO</td><td><span class="badge-pill badge-success">OK</span></td></tr>
+          <tr><td>postalCode</td><td><strong style="color:var(--danger);">80014</strong></td><td><span class="badge-pill badge-danger">Wrong &mdash; Aurora ZIP</span></td></tr>
+          <tr><td>streetAddress</td><td><em>Not present</em></td><td><span class="badge-pill badge-warning">Missing</span></td></tr>
+          <tr><td>priceRange</td><td><em>Not present</em></td><td><span class="badge-pill badge-warning">Optional, missing</span></td></tr>
+          <tr><td>image</td><td><em>Not present</em></td><td><span class="badge-pill badge-warning">Optional, missing</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="screenshot-wrap">
+        <img src="screenshots/schema-client.png" alt="Google Rich Results Test showing LocalBusiness schema issues for mackeypools.com">
+        <div class="screenshot-caption">Rich Results Test &mdash; LocalBusiness schema with placeholder phone (123 456 7890) and wrong ZIP code (80014 = Aurora)</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h3 style="margin-bottom:12px; font-size:1em; color:var(--primary);">3B &mdash; On-Page SEO Issues</h3>
+
+  <div class="callout callout-danger">
+    <strong>Services Page Has Unfilled Wix Placeholder Text (Indexed by Google)</strong>
+    <p>The /services page contains the default Wix editor text: "I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click Edit Text..." This page appears in Google's index and is the first impression many searchers may get after clicking an organic result. It must be rewritten immediately.</p>
+  </div>
+
+  <table style="margin-top:15px;">
+    <thead>
+      <tr><th>Element</th><th>Current State</th><th>Recommended</th><th>SEO Impact</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>H1 Tag &mdash; Homepage</td><td><span class="badge-pill badge-danger">MISSING &mdash; no H1 exists</span></td><td>"Custom Pool Builder Denver, CO"</td><td>High &mdash; primary topic signal for Google</td></tr>
+      <tr><td>H2 Tag &mdash; Homepage</td><td>Phone "303.829.2569" placed in H2</td><td>Keyword-focused secondary heading</td><td>Medium &mdash; heading hierarchy wasted</td></tr>
+      <tr><td>Homepage Word Count</td><td><span class="badge-pill badge-danger">168 words</span></td><td>800&ndash;1,200+ words</td><td>High &mdash; thin content ranks poorly</td></tr>
+      <tr><td>Services Page Content</td><td><span class="badge-pill badge-danger">Wix placeholder text</span></td><td>Detailed service descriptions, 400+ words</td><td>Critical &mdash; indexed garbage content</td></tr>
+      <tr><td>Image Alt Text</td><td><span class="badge-pill badge-danger">Missing on portfolio images</span></td><td>"Custom infinity pool Denver CO by Mackey Pools"</td><td>Medium &mdash; missed keyword + accessibility signals</td></tr>
+      <tr><td>Blog / Content Hub</td><td><span class="badge-pill badge-danger">None</span></td><td>Monthly educational content</td><td>High &mdash; competitors rank for informational queries</td></tr>
+      <tr><td>Location / Service Area Pages</td><td><span class="badge-pill badge-danger">0 pages</span></td><td>Cherry Hills, Englewood, Lone Tree, etc.</td><td>High &mdash; competitors dominate suburbs with these</td></tr>
+      <tr><td>"Copy-of" Orphan Pages</td><td><span class="badge-pill badge-warning">3 pages in sitemap</span></td><td>Delete or 301 redirect to canonical</td><td>Medium &mdash; duplicate content signal</td></tr>
+      <tr><td>Copyright Footer</td><td><span class="badge-pill badge-warning">&copy; 2018 (8 years outdated)</span></td><td>&copy; 2026</td><td>Low &mdash; signals abandoned site to visitors</td></tr>
+      <tr><td>Email Consistency</td><td>Displays: kenwithmps@gmail.com / mailto: ken@mackeypoolsandspas.com</td><td>Consistent professional email everywhere</td><td>Medium &mdash; looks unprofessional</td></tr>
+      <tr><td>HTTPS</td><td><span class="badge-pill badge-success">Enabled &#10003;</span></td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Canonical Tags</td><td><span class="badge-pill badge-success">Self-referencing &#10003;</span></td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Google-Indexed Pages</td><td>8 pages (sitemap has 15)</td><td>All real pages indexed, drafts removed</td><td>Medium</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 3A: PERFORMANCE -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon icon-green">&#9889;</div>
+    <div>
+      <div class="section-title">Section 3A: Page Performance &amp; Core Web Vitals</div>
+      <div class="section-subtitle">DataForSEO Lighthouse v13.3 &mdash; Desktop analysis &mdash; June 2, 2026</div>
+    </div>
+  </div>
+
+  <p style="margin-bottom:16px; font-size:14px;">Page performance is a relative strength for Mackey Pools. The Wix-hosted site delivers solid desktop scores, which is a positive foundation for when other SEO issues are resolved.</p>
+
+  <h3 style="margin-bottom:12px; font-size:1em; color:var(--primary);">Lighthouse Scores (Desktop)</h3>
+  <div class="metrics-grid">
+    <div class="metric-card"><div class="metric-value good">89</div><div class="metric-label">Performance</div><div class="metric-sub">Score /100</div></div>
+    <div class="metric-card"><div class="metric-value good">86</div><div class="metric-label">Accessibility</div><div class="metric-sub">Score /100</div></div>
+    <div class="metric-card"><div class="metric-value good">100</div><div class="metric-label">Best Practices</div><div class="metric-sub">Score /100</div></div>
+    <div class="metric-card"><div class="metric-value good">92</div><div class="metric-label">SEO</div><div class="metric-sub">Score /100</div></div>
+    <div class="metric-card"><div class="metric-value bad">33</div><div class="metric-label">Agentic Browsing</div><div class="metric-sub">AI accessibility</div></div>
+  </div>
+
+  <h3 style="margin-bottom:12px; font-size:1em; color:var(--primary);">Core Web Vitals &mdash; Lab Data</h3>
+  <div class="metrics-grid">
+    <div class="metric-card"><div class="metric-value good">464ms</div><div class="metric-label">FCP</div><div class="metric-sub">First Contentful Paint &mdash; Excellent</div></div>
+    <div class="metric-card"><div class="metric-value good">2.26s</div><div class="metric-label">LCP</div><div class="metric-sub">Largest Contentful Paint &mdash; Good</div></div>
+    <div class="metric-card"><div class="metric-value good">0.003</div><div class="metric-label">CLS</div><div class="metric-sub">Layout Shift &mdash; Excellent</div></div>
+    <div class="metric-card"><div class="metric-value good">676ms</div><div class="metric-label">Speed Index</div><div class="metric-sub">Excellent</div></div>
+    <div class="metric-card"><div class="metric-value good">21ms</div><div class="metric-label">TTFB</div><div class="metric-sub">Server Response &mdash; Fast</div></div>
+    <div class="metric-card"><div class="metric-value ok">1.52 MB</div><div class="metric-label">Page Weight</div><div class="metric-sub">Moderate &mdash; monitor on mobile</div></div>
+  </div>
+
+  <div class="screenshot-wrap" style="margin-top:16px;">
+    <img src="screenshots/pagespeed-cwv.png" alt="PageSpeed Insights results for mackeypools.com">
+    <div class="screenshot-caption">PageSpeed Insights &mdash; mackeypools.com (note: page loaded but analysis was not auto-submitted; lighthouse data above sourced from DataForSEO API)</div>
+  </div>
+
+  <div class="callout callout-warning" style="margin-top:16px;">
+    <strong>Minor Technical Issues to Address</strong>
+    <p>Audit flagged: 3 render-blocking scripts, unused JavaScript (140ms savings opportunity), DOM size of 396KB, and 1.52MB page weight. These are not urgent on desktop but should be monitored as Wix mobile performance is typically lower than desktop. Also: the Wix platform is shown as the tech stack, which limits the extent of custom performance optimization possible.</p>
+  </div>
+</div>
+
+<!-- SECTION 4: CITATIONS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon icon-orange">&#128203;</div>
+    <div>
+      <div class="section-title">Section 4: Citation Consistency (NAP Audit)</div>
+      <div class="section-subtitle">Name, Address, Phone uniformity across key platforms</div>
+    </div>
+  </div>
+
+  <div class="callout callout-danger">
+    <strong>3 Different Phone Numbers Found Across Platforms &mdash; Major NAP Inconsistency</strong>
+    <p>The business has three different phone numbers appearing across different platforms: <strong>303-829-2569</strong> (website header), <strong>(303) 923-3950</strong> (Yellow Pages / MapQuest), and <strong>123 456 7890</strong> (LocalBusiness schema &mdash; a Wix placeholder that was never updated). Additionally, the GBP has no phone number at all. This fragmentation prevents Google from verifying the business entity and is a direct local ranking suppression factor.</p>
+  </div>
+
+  <div class="callout callout-info" style="margin-top:12px;">
+    <strong>Canonical NAP (Recommended)</strong>
+    <p>Name: <strong>Mackey Pools &amp; Spas</strong> &nbsp;|&nbsp; Phone: <strong>(303) 829-2569</strong> &nbsp;|&nbsp; Website: <strong>https://www.mackeypools.com</strong> &nbsp;|&nbsp; Address: Confirm correct address and use consistently everywhere.</p>
+  </div>
+
+  <table style="margin-top:16px;">
+    <thead>
+      <tr><th>Platform</th><th>Name Listed</th><th>Address</th><th>Phone</th><th>Website</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Website (Reference)</strong></td>
+        <td>Mackey Pools &amp; Spas</td>
+        <td class="nap-missing">Not published on site</td>
+        <td class="nap-match">(303) 829-2569</td>
+        <td class="nap-match">mackeypools.com</td>
+        <td><span class="badge-pill badge-warning">Reference</span></td>
+      </tr>
+      <tr>
+        <td><strong>Google Business Profile</strong></td>
+        <td class="nap-match">Mackey Pools &amp; Spas</td>
+        <td class="nap-missing">Not shown (SAB)</td>
+        <td class="nap-mismatch">MISSING &mdash; none listed</td>
+        <td class="nap-match">mackeypools.com</td>
+        <td><span class="badge-pill badge-danger">Critical Issue</span></td>
+      </tr>
+      <tr>
+        <td><strong>LocalBusiness Schema</strong></td>
+        <td class="nap-match">Mackey Pools &amp; Spas</td>
+        <td class="nap-mismatch">ZIP 80014 (Aurora)</td>
+        <td class="nap-mismatch">123 456 7890 (placeholder)</td>
+        <td class="nap-match">mackeypools.com</td>
+        <td><span class="badge-pill badge-danger">Critical Issue</span></td>
+      </tr>
+      <tr>
+        <td><strong>Yellow Pages</strong></td>
+        <td class="nap-mismatch">Mackey Pools and Spas</td>
+        <td class="nap-mismatch">4520 S Navajo St, Englewood, CO 80110</td>
+        <td class="nap-mismatch">(303) 923-3950</td>
+        <td class="nap-missing">Not listed</td>
+        <td><span class="badge-pill badge-danger">Mismatch</span></td>
+      </tr>
+      <tr>
+        <td><strong>MapQuest</strong></td>
+        <td class="nap-match">Mackey Pools and Spas</td>
+        <td class="nap-mismatch">Englewood, CO</td>
+        <td class="nap-missing">Unknown</td>
+        <td class="nap-missing">Unknown</td>
+        <td><span class="badge-pill badge-warning">Partial</span></td>
+      </tr>
+      <tr>
+        <td><strong>BBB</strong></td>
+        <td class="nap-missing">Not found (404)</td>
+        <td class="nap-missing">&mdash;</td>
+        <td class="nap-missing">&mdash;</td>
+        <td class="nap-missing">&mdash;</td>
+        <td><span class="badge-pill badge-muted">Not Listed</span></td>
+      </tr>
+      <tr>
+        <td><strong>Houzz</strong></td>
+        <td class="nap-missing">Not found (404)</td>
+        <td class="nap-missing">&mdash;</td>
+        <td class="nap-missing">&mdash;</td>
+        <td class="nap-missing">&mdash;</td>
+        <td><span class="badge-pill badge-muted">Not Listed</span></td>
+      </tr>
+      <tr>
+        <td><strong>Yelp</strong></td>
+        <td class="nap-missing">Could not confirm</td>
+        <td class="nap-missing">&mdash;</td>
+        <td class="nap-missing">&mdash;</td>
+        <td class="nap-missing">&mdash;</td>
+        <td><span class="badge-pill badge-muted">Needs Verification</span></td>
+      </tr>
+      <tr>
+        <td><strong>Angi</strong></td>
+        <td class="nap-missing">Not confirmed</td>
+        <td class="nap-missing">&mdash;</td>
+        <td class="nap-missing">&mdash;</td>
+        <td class="nap-missing">&mdash;</td>
+        <td><span class="badge-pill badge-muted">Needs Check</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:16px; background:var(--light-bg); border-radius:8px; padding:16px;">
+    <strong style="display:block; margin-bottom:8px;">Overall Citation Consistency Score: ~20%</strong>
+    <div class="score-bar" style="height:14px;"><div class="score-bar-fill fill-red" style="width:20%"></div></div>
+    <p style="font-size:13px; margin-top:8px; color:var(--muted);">The business has 3 conflicting phone numbers, no consistent address, and is absent from major citation platforms (BBB, Houzz). Competitors like Aquality and Integrity are listed and consistent across 10+ citation sources. Target: 90%+ consistency within 60 days.</p>
+  </div>
+</div>
+
+<!-- SECTION 5: COMPETITORS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon icon-purple">&#127942;</div>
+    <div>
+      <div class="section-title">Section 5: Competitor Benchmarking</div>
+      <div class="section-subtitle">Top local pack competitors vs. Mackey Pools &amp; Spas</div>
+    </div>
+  </div>
+
+  <div class="comp-grid">
+    <div class="comp-card client">
+      <div class="comp-name">Mackey Pools &amp; Spas (Client)</div>
+      <div class="comp-rating"><span class="stars">&#9733;</span> 1.0</div>
+      <div class="comp-stat">1 review &middot; Service area &middot; 20+ yrs experience</div>
+      <div class="comp-stat">mackeypools.com &middot; Owner-led model</div>
+      <div class="comp-features">
+        <div class="comp-feature-item"><span class="cross">&#10007;</span> In any local pack</div>
+        <div class="comp-feature-item"><span class="cross">&#10007;</span> Phone on GBP</div>
+        <div class="comp-feature-item"><span class="cross">&#10007;</span> GBP description / services</div>
+        <div class="comp-feature-item"><span class="cross">&#10007;</span> Google Posts activity</div>
+        <div class="comp-feature-item"><span class="cross">&#10007;</span> Review responses</div>
+        <div class="comp-feature-item"><span class="cross">&#10007;</span> Location / area pages</div>
+        <div class="comp-feature-item"><span class="cross">&#10007;</span> Blog or content hub</div>
+        <div class="comp-feature-item"><span class="cross">&#10007;</span> Real schema phone number</div>
+        <div class="comp-feature-item"><span class="cross">&#10007;</span> Services page content</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Good site performance (89/100)</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> 20+ years genuine experience</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Quality portfolio photos</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Testimonials page exists</div>
+      </div>
+    </div>
+
+    <div class="comp-card winner">
+      <div class="comp-name">Integrity Pool Builders &mdash; Local Pack #1</div>
+      <div class="comp-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9</div>
+      <div class="comp-stat">99 reviews &middot; Englewood, CO &middot; 10+ yrs</div>
+      <div class="comp-stat">integritypoolbuilders.com</div>
+      <div class="comp-features">
+        <div class="comp-feature-item"><span class="check">&#10003;</span> #1 local pack for 5/7 keywords</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Phone on GBP</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> BBB A+ accredited</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Full schema with real data</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> 10+ detailed project pages</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> 3D design services</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Commercial pools</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Maintenance &amp; service</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Social media active</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Multiple service area pages</div>
+      </div>
+    </div>
+
+    <div class="comp-card winner">
+      <div class="comp-name">Aquality Pools &amp; Spas &mdash; Top 3 Always</div>
+      <div class="comp-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9</div>
+      <div class="comp-stat">72 reviews &middot; Broomfield, CO &middot; 40+ yrs</div>
+      <div class="comp-stat">aqualityconstruction.com</div>
+      <div class="comp-features">
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Top 3 across all keywords</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Full LocalBusiness schema</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> 6 dedicated location pages</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> APSP CBP certified</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Veteran-owned business badge</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> FAQ + Tips content section</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Press coverage page</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Eco-friendly pool option</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Price range $$$$ shown</div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-name">Wetworks Pool &amp; Spa LLC</div>
+      <div class="comp-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9</div>
+      <div class="comp-stat">18 reviews &middot; Englewood, CO &middot; 15+ yrs</div>
+      <div class="comp-stat">wetworkspoolandspa.com</div>
+      <div class="comp-features">
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Top 3 for 4/7 keywords</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Google Local Services Ads running</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Dedicated pool remodel page</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Maintenance services page</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Ranks top 3 with only 18 reviews</div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-name">Rocky Mountain Pool Builders</div>
+      <div class="comp-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0</div>
+      <div class="comp-stat">1 review &middot; Denver, CO &middot; 5+ yrs</div>
+      <div class="comp-stat">rockymountainpoolbuilders.com</div>
+      <div class="comp-features">
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Local pack #2 for "pool builder denver co"</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Denver city-center location advantage</div>
+        <div class="comp-feature-item" style="color:var(--success); font-weight:600; font-size:12px;">Key insight: ranks with only 1 review because it is a 5-star review. Rating quality beats review volume.</div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-name">Laguna Pools</div>
+      <div class="comp-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;</span> 4.7</div>
+      <div class="comp-stat">27 reviews &middot; Lakewood, CO &middot; 25+ yrs</div>
+      <div class="comp-stat">lagunapoolsllc.us</div>
+      <div class="comp-features">
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Local pack for renovation keywords</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Pool construction + cleaning + repair</div>
+        <div class="comp-feature-item"><span class="check">&#10003;</span> Full service offering</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+    <div class="screenshot-wrap">
+      <img src="screenshots/competitor-integrity-pool-builders.png" alt="Integrity Pool Builders GBP listing">
+      <div class="screenshot-caption">Integrity Pool Builders &mdash; Local Pack #1 across all major keywords. 4.9&#9733; with 99 reviews. Note fully completed GBP.</div>
+    </div>
+    <div class="screenshot-wrap">
+      <img src="screenshots/competitor-aquality-pools.png" alt="Aquality Pools & Spas GBP listing">
+      <div class="screenshot-caption">Aquality Pools &amp; Spas &mdash; Consistent top 3. 4.9&#9733; with 72 reviews. APSP certified, 6 location pages.</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:24px; margin-bottom:12px; font-size:1em; color:var(--primary);">Head-to-Head Comparison</h3>
+  <table>
+    <thead>
+      <tr><th>Signal</th><th>Mackey Pools</th><th>Integrity</th><th>Aquality</th><th>Wetworks</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Google reviews</td><td style="color:var(--danger);font-weight:700;">1</td><td style="color:var(--success);font-weight:700;">99</td><td style="color:var(--success);font-weight:700;">72</td><td>18</td></tr>
+      <tr><td>Average rating</td><td style="color:var(--danger);font-weight:700;">1.0&#9733;</td><td style="color:var(--success);font-weight:700;">4.9&#9733;</td><td style="color:var(--success);font-weight:700;">4.9&#9733;</td><td>4.9&#9733;</td></tr>
+      <tr><td>Phone on GBP</td><td style="color:var(--danger);">No</td><td style="color:var(--success);">Yes</td><td style="color:var(--success);">Yes</td><td style="color:var(--success);">Yes</td></tr>
+      <tr><td>Real schema phone</td><td style="color:var(--danger);">No (placeholder)</td><td style="color:var(--success);">Yes</td><td style="color:var(--success);">Yes</td><td style="color:var(--success);">Yes</td></tr>
+      <tr><td>Location pages</td><td style="color:var(--danger);">0</td><td style="color:var(--success);">4+</td><td style="color:var(--success);">6+</td><td>Unknown</td></tr>
+      <tr><td>Industry certifications</td><td style="color:var(--danger);">None shown</td><td style="color:var(--success);">BBB A+</td><td style="color:var(--success);">APSP CBP, IWI</td><td>Unknown</td></tr>
+      <tr><td>Maintenance service</td><td style="color:var(--danger);">No</td><td style="color:var(--success);">Yes</td><td style="color:var(--success);">Yes</td><td style="color:var(--success);">Yes</td></tr>
+      <tr><td>Est. monthly traffic value</td><td style="color:var(--danger);">~$12</td><td>High ($2,000+)</td><td>High ($1,500+)</td><td>Moderate</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 6: ACTION PLAN -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon icon-red">&#127919;</div>
+    <div>
+      <div class="section-title">Section 6: Prioritized Action Plan</div>
+      <div class="section-subtitle">Ranked by impact on local visibility and lead generation</div>
+    </div>
+  </div>
+
+  <div class="priority-section">
+    <div class="priority-header"><span class="priority-badge priority-critical">Critical &mdash; Do This Week</span></div>
+
+    <div class="action-item">
+      <div class="action-item-title">1. Add Phone Number to Google Business Profile</div>
+      <div class="action-item-desc">Log into GBP Manager (business.google.com) and add (303) 829-2569 as the primary phone. A GBP without a phone number looks abandoned to Google and severely limits local pack eligibility. This is a 5-minute fix with potentially outsized ranking impact.</div>
+      <div class="action-item-meta">Time: 5 minutes &middot; Platform: Google Business Profile Manager &middot; Impact: Very High</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">2. Respond to the 1-Star Review Professionally</div>
+      <div class="action-item-desc">Write a calm, professional owner response acknowledging the reviewer's experience. Silence is far worse than a diplomatic reply. Suggested response: "We take the quality of every project seriously and regret that you had this experience. We would welcome the opportunity to discuss this further &mdash; please contact Ken directly at (303) 829-2569." Even if the dispute was complex, responding shows prospective clients that you are engaged and professional.</div>
+      <div class="action-item-meta">Time: 15 minutes &middot; Platform: GBP Manager &middot; Impact: High &mdash; First thing prospects see</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">3. Fix the LocalBusiness Schema Phone and ZIP Code</div>
+      <div class="action-item-desc">In Wix, go to SEO Settings and find the LocalBusiness structured data block. Change telephone from "123 456 7890" to "(303) 829-2569" and postalCode from "80014" (Aurora) to the correct ZIP for your service area. This schema is being read by Google to verify business contact data &mdash; fake data actively hurts entity trust.</div>
+      <div class="action-item-meta">Time: 15 minutes &middot; Platform: Wix SEO Advanced Settings &middot; Impact: High</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">4. Rewrite the Services Page Immediately</div>
+      <div class="action-item-desc">The /services page currently contains Wix default text and is indexed by Google. Replace with at least 500 words describing each service: Custom Pool Design and Construction, Custom Spas and Hot Tubs, Water Features, Pool Covers, and Pool Renovations. Include the Denver/Colorado service area context. Add real photos. This single page fix removes active harmful content from Google's index.</div>
+      <div class="action-item-meta">Time: 2-3 hours &middot; Platform: Wix Editor &middot; Impact: Critical</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">5. Launch an Immediate Review Generation Campaign</div>
+      <div class="action-item-desc">Contact every past client from the last 2-3 years by phone or email. Send a short, personal message: "Hi [Name], I hope you're still enjoying your pool! If you have a moment, I'd really appreciate a Google review &mdash; it means a lot to a small family business. Here's the link: [GBP review link]." Target 10 reviews in the first 30 days. Rocky Mountain Pool Builders ranks #2 in the local pack with just 1 review at 5 stars &mdash; you only need the rating to improve to get back in the pack.</div>
+      <div class="action-item-meta">Time: Ongoing &middot; Impact: Critical &mdash; Nothing else matters more than this right now</div>
+    </div>
+  </div>
+
+  <div class="priority-section">
+    <div class="priority-header"><span class="priority-badge priority-high">High Priority &mdash; Within 30 Days</span></div>
+
+    <div class="action-item">
+      <div class="action-item-title">6. Add H1 Tag to Homepage</div>
+      <div class="action-item-desc">In Wix, designate the primary headline as H1 (not H2 or H5). Recommended H1: "Custom Pool &amp; Spa Builder Serving Denver, CO." Currently the phone number occupies the H2 position, which wastes the heading hierarchy. Move the phone to the header/navigation area instead.</div>
+      <div class="action-item-meta">Time: 15 minutes &middot; Impact: High</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">7. Expand Homepage Content to 800+ Words</div>
+      <div class="action-item-desc">168 words is far too thin for a competitive keyword. Add: an intro paragraph with primary keywords (custom pool builder Denver CO), a services overview section, a "Why Choose Mackey" section highlighting 20-year owner-operated differentiator, a service areas list, and a clear CTA with phone number. Competitors average 800-1,500 words on their homepages.</div>
+      <div class="action-item-meta">Time: 3-4 hours &middot; Impact: High</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">8. Complete the GBP Profile Fully</div>
+      <div class="action-item-desc">Write a 750-character GBP business description. Add services: Custom Pool Construction, Custom Spa Construction, Water Features, Pool Renovations, Pool Covers. Add secondary categories: Hot Tub Store, Swimming Pool Repair Service. Configure service area to include all target cities. Upload 20+ high-quality project photos with descriptive filenames.</div>
+      <div class="action-item-meta">Time: 2-3 hours &middot; Impact: High</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">9. Resolve NAP Inconsistency Across All Platforms</div>
+      <div class="action-item-desc">Decide on one canonical phone number and address. Update the Yellow Pages listing (currently showing (303) 923-3950 and Englewood address). Claim and verify the Yelp listing. Update the schema ZIP code and phone. Ensure every platform shows the exact same business name format, phone, and address.</div>
+      <div class="action-item-meta">Time: 1-2 hours &middot; Impact: High</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">10. Add Image Alt Text Throughout Site</div>
+      <div class="action-item-desc">All portfolio photos currently have no alt text. In Wix, add descriptive alt text to each image: e.g., "Custom negative edge pool Cherry Hills Village Denver by Mackey Pools &amp; Spas." This is a missed keyword signal for Google Images and improves accessibility score (currently 86/100).</div>
+      <div class="action-item-meta">Time: 1-2 hours &middot; Impact: Medium-High</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">11. Start Weekly Google Posts</div>
+      <div class="action-item-desc">Post at least once per week in GBP: share project completion photos, seasonal pool tips (winterizing a Colorado pool, opening your pool in spring), or a "pool of the month" feature. This signals to Google that the business is active &mdash; a local ranking factor. Competitors who post consistently maintain better visibility than dormant listings.</div>
+      <div class="action-item-meta">Time: 20 min/week &middot; Impact: Medium</div>
+    </div>
+  </div>
+
+  <div class="priority-section">
+    <div class="priority-header"><span class="priority-badge priority-medium">Medium Priority &mdash; 30-60 Days</span></div>
+
+    <div class="action-item">
+      <div class="action-item-title">12. Create Service Area / Location Pages</div>
+      <div class="action-item-desc">Aquality Pools ranks across the Denver metro with 6 dedicated location pages (Denver, Boulder, Broomfield, Erie, Longmont, Cherry Hills Village). Create 5-8 pages targeting: Cherry Hills Village Pool Builder, Englewood CO Pool Builder, Lone Tree Pool Builder, Castle Rock Pool Builder, Greenwood Village Pool Builder. Each page needs unique 300+ word content, embedded Google Map, local testimonial, and LocalBusiness schema.</div>
+      <div class="action-item-meta">Time: 8-12 hours total &middot; Impact: High &mdash; Opens geo-targeted search opportunities</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">13. Get Listed on BBB, Houzz, and Angi</div>
+      <div class="action-item-desc">The business is not found on BBB (404 error), Houzz (404 error), or confirmed on Angi. Integrity Pool Builders prominently displays its BBB A+ rating as a trust signal. Claim listings on: BBB (bbb.org/western-mountain-pacific/accredited-business), Houzz, Angi, Thumbtack, and Nextdoor. Use consistent NAP on all.</div>
+      <div class="action-item-meta">Time: 2-3 hours &middot; Impact: Medium &mdash; Citation signals + referral traffic</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">14. Remove or Complete Orphaned "Copy-Of" Pages</div>
+      <div class="action-item-desc">Three pages in the sitemap have "copy-of" in the URL (/copy-of-spas, /copy-of-build-process, /copy-of-pools). Delete these Wix draft pages or 301 redirect them to their canonical counterparts. They fragment crawl budget and potentially send duplicate content signals.</div>
+      <div class="action-item-meta">Time: 30 minutes &middot; Impact: Medium</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">15. Publish Pool Cost Guide for Denver</div>
+      <div class="action-item-desc">The related searches "pool builder denver co cost" and "pool builder denver co reviews" appear consistently. Create a page: "How Much Does a Custom Pool Cost in Denver, CO?" addressing price ranges for concrete, fiberglass, and vinyl pools. SERP data shows a concrete custom pool ranges $65k-$120k. This targets high-intent informational searchers who are actively researching.</div>
+      <div class="action-item-meta">Time: 3-4 hours &middot; Impact: Medium &mdash; Captures top-of-funnel traffic</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">16. Update Footer Copyright and Fix Email Inconsistency</div>
+      <div class="action-item-desc">Footer says "&copy; 2018" &mdash; update to 2026. The contact page displays kenwithmps@gmail.com but the mailto link goes to ken@mackeypoolsandspas.com. Pick one and use it consistently. A professional domain email (ken@mackeypoolsandspas.com) conveys more authority than Gmail for a $250k+ project business.</div>
+      <div class="action-item-meta">Time: 10 minutes &middot; Impact: Low-Medium &mdash; Perception and professionalism</div>
+    </div>
+  </div>
+
+  <div class="priority-section">
+    <div class="priority-header"><span class="priority-badge priority-ongoing">Ongoing &mdash; Monthly</span></div>
+
+    <div class="action-item">
+      <div class="action-item-title">17. Review Generation System &mdash; Every Project</div>
+      <div class="action-item-desc">Build it into the project close-out process: at the final walkthrough, give Ken a card or send a text with the Google review link. Follow up 1 week later. Respond to every review within 48 hours &mdash; positive and negative. Goal: 2-3 new reviews per month once the pipeline system is running.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">18. Monthly Google Posts and Photo Uploads</div>
+      <div class="action-item-desc">1 Google Post per week minimum. 5 new project photos per month minimum. Add Q&amp;A answers to the GBP. Share project completion content on Facebook/Instagram and link to the GBP.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-item-title">19. Track Rankings and Measure Progress</div>
+      <div class="action-item-desc">Monthly: check local pack position for all 7 keywords from this audit. Track Google review count and rating. Check GBP insights for views, search impressions, and call clicks. KPI targets: local pack entry within 90 days, 4.0+ average rating within 6 months.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: ROADMAP -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon icon-green">&#128197;</div>
+    <div>
+      <div class="section-title">Section 7: 90-Day Roadmap</div>
+      <div class="section-subtitle">Month-by-month execution plan</div>
+    </div>
+  </div>
+
+  <div class="roadmap">
+    <div class="roadmap-phase">
+      <h4 style="color:var(--danger);">Month 1: Fix the Foundations</h4>
+      <ul>
+        <li>Add phone to GBP (5 min)</li>
+        <li>Respond to 1-star review</li>
+        <li>Fix schema phone + ZIP</li>
+        <li>Rewrite /services page</li>
+        <li>Add H1 tag to homepage</li>
+        <li>Launch review campaign (target: 10)</li>
+        <li>Start weekly Google Posts</li>
+        <li>Update footer copyright</li>
+        <li>Fix email inconsistency</li>
+      </ul>
+    </div>
+    <div class="roadmap-phase">
+      <h4 style="color:var(--warning);">Month 2: Content and Authority</h4>
+      <ul>
+        <li>Expand homepage to 800+ words</li>
+        <li>Complete GBP (description, services)</li>
+        <li>Fix NAP across all directories</li>
+        <li>Add all image alt text</li>
+        <li>Delete copy-of orphan pages</li>
+        <li>Claim BBB, Houzz, Angi listings</li>
+        <li>Continue review generation</li>
+        <li>Configure GBP service area cities</li>
+        <li>Upload 20+ project photos to GBP</li>
+      </ul>
+    </div>
+    <div class="roadmap-phase">
+      <h4 style="color:var(--success);">Month 3: Expand and Dominate</h4>
+      <ul>
+        <li>Launch 4-5 location/area pages</li>
+        <li>Publish Denver pool cost guide</li>
+        <li>Write first blog post</li>
+        <li>Review local pack rankings</li>
+        <li>Target: 15+ Google reviews</li>
+        <li>Target: 4.0+ average rating</li>
+        <li>Evaluate Google Local Services Ads</li>
+        <li>Add BBB badge to website</li>
+        <li>Start APSP membership research</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:24px; margin-bottom:12px; font-size:1em; color:var(--primary);">Success Metrics: Current State vs. Targets</h3>
+  <table>
+    <thead>
+      <tr><th>Metric</th><th>Current (June 2026)</th><th>90-Day Target</th><th>6-Month Target</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Google Review Count</td><td style="color:var(--danger);font-weight:700;">1</td><td>15+</td><td>30+</td></tr>
+      <tr><td>Google Average Rating</td><td style="color:var(--danger);font-weight:700;">1.0&#9733;</td><td>4.0&#9733;+</td><td>4.5&#9733;+</td></tr>
+      <tr><td>Local Pack Appearances (of 7)</td><td style="color:var(--danger);font-weight:700;">0 of 7</td><td>2-3 of 7</td><td>5-7 of 7</td></tr>
+      <tr><td>Organic Keywords Ranking</td><td style="color:var(--danger);font-weight:700;">2</td><td>15+</td><td>40+</td></tr>
+      <tr><td>Est. Monthly Traffic Value</td><td style="color:var(--danger);font-weight:700;">~$12</td><td>$200+</td><td>$800+</td></tr>
+      <tr><td>GBP Profile Completion</td><td style="color:var(--danger);font-weight:700;">~20%</td><td>90%+</td><td>100%</td></tr>
+      <tr><td>Citation Consistency</td><td style="color:var(--danger);font-weight:700;">~20%</td><td>70%+</td><td>90%+</td></tr>
+      <tr><td>Keywords with real service page content</td><td style="color:var(--danger);font-weight:700;">0 (placeholder text)</td><td>5 service pages</td><td>5 service + 5 location pages</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 8: QUICK REFERENCE -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon icon-blue">&#128202;</div>
+    <div>
+      <div class="section-title">Section 8: Quick Reference Summary</div>
+      <div class="section-subtitle">What Mackey Pools has going for it &mdash; and what must change</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 style="color:var(--success); margin-bottom:12px; font-size:1em;">What Mackey Pools Does Well</h3>
+      <ul style="list-style:none; padding:0;">
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:14px;"><strong>20+ years of genuine experience</strong> &mdash; started 2004, a differentiator no competitor under 10 years can match</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:14px;"><strong>Owner-operated model</strong> &mdash; Ken personally designs and builds every pool, a compelling story vs. large companies</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:14px;"><strong>Quality portfolio photos</strong> &mdash; the pool work is clearly premium and visually impressive</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:14px;"><strong>Good website performance</strong> &mdash; 89/100 Lighthouse, fast LCP (2.26s), excellent CLS (0.003)</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:14px;"><strong>HTTPS and canonical tags</strong> &mdash; technical SEO foundation is correct</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:14px;"><strong>Testimonials page</strong> &mdash; social proof exists, just needs Google Reviews to amplify it</li>
+        <li style="padding:8px 0; font-size:14px;"><strong>Build process page</strong> &mdash; educating clients is a sign of professionalism and transparency</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--danger); margin-bottom:12px; font-size:1em;">What Must Change Immediately</h3>
+      <ul style="list-style:none; padding:0;">
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:14px;"><strong>Add phone to GBP</strong> &mdash; the listing says "Add phone number" right now</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:14px;"><strong>Respond to the 1-star review</strong> &mdash; 4 years of silence looks like the business is abandoned</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:14px;"><strong>Fix schema phone (123 456 7890)</strong> &mdash; Wix placeholder never replaced after site setup</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:14px;"><strong>Rewrite the services page</strong> &mdash; currently has default Wix "I'm a paragraph" text, indexed by Google</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:14px;"><strong>Get 10+ Google reviews</strong> &mdash; the single highest-leverage action available; rating recovery unlocks local pack</li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:14px;"><strong>Standardize NAP</strong> &mdash; 3 different phone numbers across platforms is actively hurting entity trust</li>
+        <li style="padding:8px 0; font-size:14px;"><strong>Add H1 to homepage</strong> &mdash; most fundamental on-page SEO requirement, currently completely missing</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="report-footer">
+  <p><strong>Local SEO &amp; Google Maps Audit &mdash; Mackey Pools &amp; Spas (mackeypools.com)</strong></p>
+  <p style="margin-top:6px;">Audit Date: June 2, 2026 &nbsp;&middot;&nbsp; Denver, CO Metro Market &nbsp;&middot;&nbsp; Prepared by GrowthArchon</p>
+  <p style="margin-top:6px; font-size:12px;">Data sources: DataForSEO SERP API, DataForSEO Lighthouse, Google Business Profile, Google Rich Results Test, Yellow Pages, MapQuest</p>
+</div>
+
+</body>
+</html>
